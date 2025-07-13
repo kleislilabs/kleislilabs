@@ -1,24 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Static Blog
+
+A modern, performant static blog built with Next.js 15, TypeScript, and Markdown. This project provides a complete blogging solution with static generation for optimal performance.
+
+## Features
+
+- 🚀 **Next.js 15** with App Router
+- 📝 **Markdown Support** for blog posts
+- 🎨 **Tailwind CSS** for styling
+- 🔒 **TypeScript** for type safety
+- 📱 **Responsive Design**
+- ⚡ **Static Site Generation** for fast loading
+- 🔍 **SEO Optimized**
+
+## Project Structure
+
+```
+├── src/
+│   ├── app/                 # App Router pages
+│   ├── components/          # React components
+│   │   ├── blog/           # Blog-specific components
+│   │   ├── layout/         # Layout components
+│   │   └── ui/             # UI components
+│   ├── lib/                # Utility functions
+│   └── types/              # TypeScript type definitions
+├── posts/                  # Markdown blog posts
+└── public/                 # Static assets
+```
 
 ## Getting Started
+
+### Development
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Adding Blog Posts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a new `.md` file in the `posts/` directory
+2. Add frontmatter with title, date, excerpt, and tags
+3. Write your content in Markdown
+4. The blog will automatically generate the page
+
+Example post structure:
+```markdown
+---
+title: "Your Post Title"
+date: "2025-01-13"
+excerpt: "Brief description of your post"
+tags: ["nextjs", "blog"]
+---
+
+# Your Post Content
+
+Write your blog post content here...
+```
 
 ## Learn More
 
