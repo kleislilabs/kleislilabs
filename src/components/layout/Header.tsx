@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { blogConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { 
   NavigationMenu, 
   NavigationMenuItem, 
@@ -36,6 +37,7 @@ export function Header() {
 
         {/* Theme toggle or actions */}
         <div className="flex items-center space-x-2">
+          <ThemeToggle />
           <Button variant="ghost" size="sm" asChild>
             <Link href="/blog">
               Blog
