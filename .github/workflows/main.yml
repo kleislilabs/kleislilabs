@@ -1,0 +1,16 @@
+name: Build latest version of the main app and redeploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger project build api
+        run: |
+          curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_0DmgIlYOmK9ZyB7jGyYkEjC7yLsu/M1CiAHevRe \
+            -H "Content-Type: application/json"
