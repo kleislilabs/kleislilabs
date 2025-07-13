@@ -1,4 +1,4 @@
-# Next.js Static Blog
+# Next.js Static Blog (** visit :: kleislilabs.com **)
 
 A modern, performant static blog built with Next.js 15, TypeScript, and Markdown. This project provides a complete blogging solution with static generation for optimal performance.
 
