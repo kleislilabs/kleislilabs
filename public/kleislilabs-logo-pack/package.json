@@ -6,7 +6,8 @@
   "scripts": {
     "generate": "node generate-pngs-sharp.js",
     "generate-imagemagick": "node generate-pngs.js",
-    "generate-hq": "node generate-pngs-hq.js"
+    "generate-hq": "node generate-pngs-hq.js",
+    "generate-ultra": "node generate-pngs-ultra.js"
   },
   "devDependencies": {
     "sharp": "^0.33.0"
