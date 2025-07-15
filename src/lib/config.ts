@@ -32,7 +32,6 @@ export const blogConfig = {
   
   // SEO
   defaultImage: '/logo-512.png',
-  favicon: '/favicon.ico',
 } as const;
 
 export type BlogConfig = typeof blogConfig;

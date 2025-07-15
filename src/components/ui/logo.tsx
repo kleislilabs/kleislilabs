@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
 
@@ -115,29 +115,48 @@ const LogoMonogram = ({ isDark }: { isDark: boolean }) => (
   </svg>
 )
 
-export function Logo({ variant = 'full', size = 'md', className, showTagline = false }: LogoProps) {
-  const { theme, systemTheme } = useTheme()
-  
-  // Determine if we should use dark mode
-  const isDark = theme === 'dark' || (theme === 'system' && systemTheme === 'dark')
-  
+export function Logo({
+  variant = 'full',
+  size = 'md',
+  className,
+  showTagline = false,
+}: LogoProps) {
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
+
+  const isDark = resolvedTheme === 'dark'
+
   const sizeClasses = {
     sm: variant === 'full' ? 'h-8' : 'h-8 w-8',
     md: variant === 'full' ? 'h-12' : 'h-12 w-12',
     lg: variant === 'full' ? 'h-16' : 'h-16 w-16'
   }
-  
-  return (
-    <div className={cn(
-      'flex items-center',
-      sizeClasses[size],
-      className
-    )}>
-      {variant === 'full' ? (
-        <LogoFull isDark={isDark} showTagline={showTagline} />
-      ) : (
+
+  const containerClasses = cn(
+    'flex items-center',
+    sizeClasses[size],
+    className,
+  )
+
+  if (variant === 'monogram') {
+    return (
+      <div className={containerClasses}>
         <LogoMonogram isDark={isDark} />
-      )}
+      </div>
+    )
+  }
+
+  return (
+    <div className={containerClasses}>
+      <LogoFull isDark={isDark} showTagline={showTagline} />
     </div>
   )
 }
