@@ -2,6 +2,7 @@ import Link from "next/link";
 import { blogConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { Logo } from "@/components/ui/logo";
 import { 
   NavigationMenu, 
   NavigationMenuItem, 
@@ -15,8 +16,11 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Link href="/" className="font-bold text-2xl">
-            {blogConfig.title}
+          <Link href="/" className="flex items-center space-x-3">
+            <Logo variant="monogram" size="sm" />
+            <span className="font-bold text-xl tracking-tight">
+              {blogConfig.title}
+            </span>
           </Link>
         </div>
 

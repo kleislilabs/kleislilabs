@@ -1,0 +1,15 @@
+{
+  "name": "kleislilabs-logo-generator",
+  "version": "1.0.0",
+  "description": "Generate PNG files from Kleislilabs SVG logos",
+  "main": "generate-pngs-sharp.js",
+  "scripts": {
+    "generate": "node generate-pngs-sharp.js",
+    "generate-imagemagick": "node generate-pngs.js",
+    "generate-hq": "node generate-pngs-hq.js",
+    "generate-ultra": "node generate-pngs-ultra.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}
