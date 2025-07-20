@@ -14,38 +14,38 @@ export function PostCard({ post }: PostCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block h-full">
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-        <CardHeader className="space-y-4">
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-10 w-10">
+        <CardHeader className="space-y-3 sm:space-y-4 p-4 sm:p-6">
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <Avatar className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0">
               <AvatarFallback>
                 {post.author ? post.author.charAt(0).toUpperCase() : "B"}
               </AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium">
+              <p className="text-xs sm:text-sm font-medium truncate">
                 {post.author || "Blog Author"}
               </p>
-              <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                <Calendar className="h-3 w-3" />
-                <span>{formatDate(post.date)}</span>
+              <div className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground">
+                <Calendar className="h-3 w-3 flex-shrink-0" />
+                <span className="truncate">{formatDate(post.date)}</span>
               </div>
             </div>
           </div>
           
           <div>
-            <CardTitle className="line-clamp-2 mb-2 hover:text-primary transition-colors">
+            <CardTitle className="line-clamp-2 mb-2 hover:text-primary transition-colors text-base sm:text-lg">
               {post.title}
             </CardTitle>
-            <CardDescription className="line-clamp-3">
+            <CardDescription className="line-clamp-3 text-sm">
               {post.excerpt}
             </CardDescription>
           </div>
         </CardHeader>
       
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Clock className="h-3 w-3" />
+          <div className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground">
+            <Clock className="h-3 w-3 flex-shrink-0" />
             <span>{post.readingTime} min read</span>
           </div>
         </div>

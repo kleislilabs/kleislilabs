@@ -15,13 +15,13 @@ export function PostNavigation({ previousPost, nextPost }: PostNavigationProps) 
       <div className="flex justify-start">
         {previousPost && (
           <Card className="w-full hover:shadow-lg transition-shadow">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <Link href={`/blog/${previousPost.slug}`}>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-2">
                   <ChevronLeft className="h-4 w-4" />
                   <span>Previous Post</span>
                 </div>
-                <h3 className="font-semibold line-clamp-2 hover:text-primary transition-colors">
+                <h3 className="font-semibold line-clamp-2 hover:text-primary transition-colors text-sm sm:text-base">
                   {previousPost.title}
                 </h3>
               </Link>
@@ -34,13 +34,13 @@ export function PostNavigation({ previousPost, nextPost }: PostNavigationProps) 
       <div className="flex justify-end">
         {nextPost && (
           <Card className="w-full hover:shadow-lg transition-shadow">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <Link href={`/blog/${nextPost.slug}`}>
                 <div className="flex items-center justify-end space-x-2 text-sm text-muted-foreground mb-2">
                   <span>Next Post</span>
                   <ChevronRight className="h-4 w-4" />
                 </div>
-                <h3 className="font-semibold line-clamp-2 hover:text-primary transition-colors text-right">
+                <h3 className="font-semibold line-clamp-2 hover:text-primary transition-colors text-right text-sm sm:text-base">
                   {nextPost.title}
                 </h3>
               </Link>

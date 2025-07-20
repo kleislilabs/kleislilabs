@@ -3,9 +3,9 @@ import { PostData, PostMetadata } from '../types/post';
 import { formatDateForSEO } from './date';
 
 const defaultMetadata = {
-  title: 'Next.js Blog',
-  description: 'A modern static blog built with Next.js and TypeScript',
-  author: 'Blog Author',
+  title: 'Kleislilabs',
+  description: 'Bringing AI into the core of your business',
+  author: 'Kleislilabs',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   image: '/images/og-default.jpg',
 };
@@ -17,7 +17,7 @@ export function generateBlogMetadata(): Metadata {
   return {
     title: defaultMetadata.title,
     description: defaultMetadata.description,
-    keywords: ['blog', 'nextjs', 'typescript', 'web development'],
+    keywords: ['blog', 'nextjs', 'typescript', 'web development', 'AI', 'LLM', 'Business', 'MVP'],
     authors: [{ name: defaultMetadata.author }],
     creator: defaultMetadata.author,
     publisher: defaultMetadata.author,

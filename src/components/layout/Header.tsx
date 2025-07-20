@@ -15,13 +15,13 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Link href="/" className="font-bold text-2xl">
+          <Link href="/" className="font-bold text-xl sm:text-2xl truncate">
             {blogConfig.title}
           </Link>
         </div>
 
-        {/* Navigation */}
-        <NavigationMenu>
+        {/* Navigation - Hidden on small screens */}
+        <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="flex items-center space-x-6">
             {blogConfig.navigation.map((item) => (
               <NavigationMenuItem key={item.href}>
@@ -35,10 +35,16 @@ export function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Theme toggle or actions */}
-        <div className="flex items-center space-x-2">
+        {/* Theme toggle and actions */}
+        <div className="flex items-center space-x-1 sm:space-x-2">
           <ThemeToggle />
-          <Button variant="ghost" size="sm" asChild>
+          <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
+            <Link href="/blog">
+              Blog
+            </Link>
+          </Button>
+          {/* Mobile blog button */}
+          <Button variant="ghost" size="sm" className="sm:hidden text-xs px-2" asChild>
             <Link href="/blog">
               Blog
             </Link>
@@ -46,5 +52,7 @@ export function Header() {
         </div>
       </div>
     </header>
-  );
+
+
+);
 }

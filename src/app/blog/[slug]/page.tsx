@@ -50,11 +50,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <Layout>
-      <Container className="py-8">
+      <Container className="py-6 sm:py-8">
         <article className="max-w-4xl mx-auto">
           <PostHeader post={post} />
           
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <PostContent content={post.content} />
           </div>
           

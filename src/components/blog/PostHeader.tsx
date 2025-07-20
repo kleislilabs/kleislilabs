@@ -14,16 +14,16 @@ export function PostHeader({ post }: PostHeaderProps) {
     <div className="space-y-6">
       {/* Title */}
       <div className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
           {post.frontmatter.title}
         </h1>
-        <p className="text-xl text-muted-foreground">
+        <p className="text-lg sm:text-xl text-muted-foreground">
           {post.frontmatter.excerpt}
         </p>
       </div>
 
       {/* Meta information */}
-      <div className="flex flex-wrap items-center gap-6">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-4 sm:gap-6">
         <div className="flex items-center space-x-3">
           <Avatar className="h-10 w-10">
             <AvatarFallback>

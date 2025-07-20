@@ -9,14 +9,14 @@ interface PostGridProps {
 export function PostGrid({ posts, className = "" }: PostGridProps) {
   if (posts.length === 0) {
     return (
-      <div className="text-center py-12">
-        <p className="text-muted-foreground">No posts found.</p>
+      <div className="text-center py-8 sm:py-12">
+        <p className="text-sm sm:text-base text-muted-foreground">No posts found.</p>
       </div>
     );
   }
 
   return (
-    <div className={`grid gap-6 md:grid-cols-2 lg:grid-cols-3 ${className}`}>
+    <div className={`grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 ${className}`}>
       {posts.map((post) => (
         <PostCard key={post.slug} post={post} />
       ))}

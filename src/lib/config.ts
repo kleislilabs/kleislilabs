@@ -3,9 +3,9 @@
  */
 
 export const blogConfig = {
-  title: 'Next.js Blog',
-  description: 'A modern static blog built with Next.js and TypeScript',
-  author: 'Blog Author',
+  title: 'Kleislilabs',
+  description: 'Bringing AI into the core of your business',
+  author: 'Kleislilabs',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   
   // Pagination settings

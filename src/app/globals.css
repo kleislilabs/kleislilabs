@@ -120,3 +120,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Mobile optimizations */
+@layer utilities {
+  /* Improve touch targets on mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Better text handling on mobile */
+  .text-mobile-friendly {
+    @apply text-sm sm:text-base leading-relaxed;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
+}
+
+/* Ensure tables are mobile responsive */
+@media (max-width: 640px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  /* Better mobile scrolling for code blocks */
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* Improve button sizing on mobile */
+  button, .btn {
+    min-height: 44px;
+  }
+}
