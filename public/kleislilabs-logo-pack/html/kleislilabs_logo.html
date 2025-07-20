@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kleislilabs Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            position: relative;
+        }
+        
+        .arrow {
+            position: absolute;
+            background: #1e3a8a;
+            border-radius: 1px;
+        }
+        
+        .arrow-1 {
+            /* Horizontal arrow forming left side of K */
+            width: 32px;
+            height: 4px;
+            top: 22px;
+            left: 0;
+            background: #1e3a8a;
+        }
+        
+        .arrow-1::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid #1e3a8a;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+        
+        .arrow-2 {
+            /* Diagonal arrow forming upper part of K */
+            width: 28px;
+            height: 4px;
+            top: 12px;
+            left: 16px;
+            background: #0d9488;
+            transform: rotate(30deg);
+            transform-origin: left center;
+        }
+        
+        .arrow-2::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid #0d9488;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+        
+        .arrow-3 {
+            /* Diagonal arrow forming lower part of K */
+            width: 28px;
+            height: 4px;
+            bottom: 12px;
+            left: 16px;
+            background: #0d9488;
+            transform: rotate(-30deg);
+            transform-origin: left center;
+        }
+        
+        .arrow-3::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid #0d9488;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+        
+        .company-name {
+            font-size: 28px;
+            font-weight: 300;
+            color: #1e3a8a;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+        
+        .tagline {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+        
+        /* Variations for different use cases */
+        .logo-variants {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .variant {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .variant-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 15px;
+        }
+        
+        .small-logo {
+            transform: scale(0.6);
+            transform-origin: left center;
+        }
+        
+        .dark-bg {
+            background: #1e293b;
+        }
+        
+        .dark-bg .company-name {
+            color: white;
+        }
+        
+        .dark-bg .arrow-1 {
+            background: #3b82f6;
+        }
+        
+        .dark-bg .arrow-1::after {
+            border-left-color: #3b82f6;
+        }
+        
+        .monogram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: #1e3a8a;
+            border-radius: 12px;
+        }
+        
+        .monogram .logo-mark {
+            filter: brightness(0) invert(1);
+        }
+        
+        .horizontal-layout {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .stacked-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .stacked-layout .company-name {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo-mark">
+            <div class="arrow arrow-1"></div>
+            <div class="arrow arrow-2"></div>
+            <div class="arrow arrow-3"></div>
+        </div>
+        <div>
+            <h1 class="company-name">Kleislilabs</h1>
+            <p class="tagline">From Vision to AI Reality</p>
+        </div>
+    </div>
+    
+    <div class="logo-variants">
+        <div class="variant">
+            <div class="variant-title">Small Scale Application</div>
+            <div class="horizontal-layout small-logo">
+                <div class="logo-mark">
+                    <div class="arrow arrow-1"></div>
+                    <div class="arrow arrow-2"></div>
+                    <div class="arrow arrow-3"></div>
+                </div>
+                <h1 class="company-name">Kleislilabs</h1>
+            </div>
+        </div>
+        
+        <div class="variant dark-bg">
+            <div class="variant-title" style="color: #e2e8f0;">Dark Background</div>
+            <div class="horizontal-layout">
+                <div class="logo-mark">
+                    <div class="arrow arrow-1"></div>
+                    <div class="arrow arrow-2"></div>
+                    <div class="arrow arrow-3"></div>
+                </div>
+                <h1 class="company-name">Kleislilabs</h1>
+            </div>
+        </div>
+        
+        <div class="variant">
+            <div class="variant-title">Monogram Version</div>
+            <div class="monogram">
+                <div class="logo-mark">
+                    <div class="arrow arrow-1"></div>
+                    <div class="arrow arrow-2"></div>
+                    <div class="arrow arrow-3"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="variant">
+            <div class="variant-title">Stacked Layout</div>
+            <div class="stacked-layout">
+                <div class="logo-mark">
+                    <div class="arrow arrow-1"></div>
+                    <div class="arrow arrow-2"></div>
+                    <div class="arrow arrow-3"></div>
+                </div>
+                <h1 class="company-name">Kleislilabs</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
