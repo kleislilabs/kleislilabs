@@ -3,10 +3,11 @@
  */
 
 export const blogConfig = {
-  title: 'Next.js Blog',
-  description: 'A modern static blog built with Next.js and TypeScript',
-  author: 'Blog Author',
+  title: 'KleisliLabs',
+  description: 'From Vision to AI Reality - AI solutions built for real business problems',
+  author: 'KleisliLabs Team',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  tagline: 'From Vision to AI Reality',
   
   // Pagination settings
   postsPerPage: 10,
@@ -16,9 +17,9 @@ export const blogConfig = {
   
   // Social media
   social: {
-    twitter: '@yourusername',
-    github: 'https://github.com/yourusername',
-    email: 'your.email@example.com',
+    twitter: '@kleislilabs',
+    github: 'https://github.com/kleislilabs',
+    email: 'hello@kleislilabs.com',
   },
   
   // Navigation
@@ -30,8 +31,7 @@ export const blogConfig = {
   ],
   
   // SEO
-  defaultImage: '/images/og-default.jpg',
-  favicon: '/favicon.ico',
+  defaultImage: '/logo-512.png',
 } as const;
 
 export type BlogConfig = typeof blogConfig;

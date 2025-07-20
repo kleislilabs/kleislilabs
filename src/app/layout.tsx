@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: `%s | ${blogConfig.title}`,
   },
   description: blogConfig.description,
-  keywords: ["blog", "nextjs", "typescript", "web development", "programming"],
+  keywords: ["AI", "artificial intelligence", "machine learning", "business solutions", "automation", "data analysis", "KleisliLabs"],
   authors: [{ name: blogConfig.author }],
   creator: blogConfig.author,
   publisher: blogConfig.author,
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: blogConfig.defaultImage,
-        width: 1200,
-        height: 630,
-        alt: blogConfig.title,
+        width: 512,
+        height: 110,
+        alt: `${blogConfig.title} - ${blogConfig.tagline}`,
       },
     ],
   },
