@@ -9,7 +9,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: `Contact | ${blogConfig.title}`,
-  description: `Get in touch with ${blogConfig.title}. We'd love to hear from you!`,
+  description: `Get in touch with ${blogConfig.title}. We&#39;d love to hear from you!`,
 };
 
 export default function ContactPage() {

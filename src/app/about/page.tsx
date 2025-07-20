@@ -44,7 +44,7 @@ export default function AboutUsPage() {
               </div>
               <div className="space-y-4 text-muted-foreground leading-7">
                 <p>
-                  Many organizations recognize AI's potential but struggle with implementation. The technology moves rapidly, 
+                  Many organizations recognize AI&#39;s potential but struggle with implementation. The technology moves rapidly, 
                   skilled AI talent is scarce, and the gap between research breakthroughs and practical applications continues to widen.
                 </p>
                 <p>
@@ -129,13 +129,13 @@ export default function AboutUsPage() {
                 <div className="flex items-start space-x-3">
                   <Badge variant="secondary" className="mt-1">Clear Communication</Badge>
                   <p className="text-muted-foreground">
-                    Regular updates, transparent timelines, and honest assessments of what's achievable within your budget and timeframe.
+                    Regular updates, transparent timelines, and honest assessments of what&#39;s achievable within your budget and timeframe.
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Badge variant="secondary" className="mt-1">Collaborative Process</Badge>
                   <p className="text-muted-foreground">
-                    We work as partners, not just vendors, ensuring knowledge transfer and building your team's AI capabilities.
+                    We work as partners, not just vendors, ensuring knowledge transfer and building your team&#39;s AI capabilities.
                   </p>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -153,7 +153,7 @@ export default function AboutUsPage() {
             <CardContent className="p-6 text-center">
               <h2 className="text-2xl font-semibold mb-4">Ready to Get Started?</h2>
               <p className="text-muted-foreground leading-7 mb-6 max-w-2xl mx-auto">
-                If you're considering AI implementation for your business, we'd be happy to discuss your specific 
+                If you&#39;re considering AI implementation for your business, we&#39;d be happy to discuss your specific 
                 challenges and explore potential solutions together.
               </p>
               <Button size="lg" asChild>
