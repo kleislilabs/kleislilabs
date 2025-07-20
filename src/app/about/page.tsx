@@ -26,8 +26,8 @@ export default function AboutUsPage() {
         <div className="mt-8 space-y-6 sm:space-y-8">
           {/* Introduction */}
           <Card>
-            <CardContent className="p-6">
-              <p className="text-lg text-muted-foreground leading-7">
+            <CardContent className="p-4 sm:p-6">
+              <p className="text-base sm:text-lg text-muted-foreground leading-6 sm:leading-7">
                 We are an AI consultancy focused on helping businesses implement practical artificial intelligence solutions. 
                 Our team of engineers and data scientists works with companies to turn AI concepts into working applications 
                 that solve specific business challenges.
@@ -37,12 +37,12 @@ export default function AboutUsPage() {
 
           {/* The Challenge We Address */}
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center space-x-2 mb-4">
-                <Target className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-semibold">The Challenge We Address</h2>
+                <Target className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-semibold">The Challenge We Address</h2>
               </div>
-              <div className="space-y-4 text-muted-foreground leading-7">
+              <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-6 sm:leading-7">
                 <p>
                   Many organizations recognize AI&#39;s potential but struggle with implementation. The technology moves rapidly, 
                   skilled AI talent is scarce, and the gap between research breakthroughs and practical applications continues to widen.
@@ -57,12 +57,12 @@ export default function AboutUsPage() {
 
           {/* Our Approach */}
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center space-x-2 mb-4">
-                <Lightbulb className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-semibold">Our Approach</h2>
+                <Lightbulb className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-semibold">Our Approach</h2>
               </div>
-              <div className="space-y-4 text-muted-foreground leading-7">
+              <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground leading-6 sm:leading-7">
                 <p>
                   We work closely with clients to understand their specific needs and develop tailored AI solutions. 
                   Our focus is on creating systems that integrate smoothly with existing workflows and deliver 
@@ -78,33 +78,33 @@ export default function AboutUsPage() {
 
           {/* What We Offer */}
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2 mb-6">
-                <Users className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-semibold">What We Offer</h2>
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center space-x-2 mb-4 sm:mb-6">
+                <Users className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-semibold">What We Offer</h2>
               </div>
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-3">
-                  <h3 className="text-lg font-semibold">Custom AI Development</h3>
-                  <p className="text-muted-foreground">
+              <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
+                <div className="space-y-2 sm:space-y-3">
+                  <h3 className="text-base sm:text-lg font-semibold">Custom AI Development</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     Machine learning models, automation systems, and data analysis tools designed for your specific requirements.
                   </p>
                 </div>
-                <div className="space-y-3">
-                  <h3 className="text-lg font-semibold">AI Strategy Consulting</h3>
-                  <p className="text-muted-foreground">
+                <div className="space-y-2 sm:space-y-3">
+                  <h3 className="text-base sm:text-lg font-semibold">AI Strategy Consulting</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     Guidance on where and how to implement AI within your organization, including feasibility assessments and implementation roadmaps.
                   </p>
                 </div>
-                <div className="space-y-3">
-                  <h3 className="text-lg font-semibold">System Integration</h3>
-                  <p className="text-muted-foreground">
+                <div className="space-y-2 sm:space-y-3">
+                  <h3 className="text-base sm:text-lg font-semibold">System Integration</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     Connecting AI solutions with your existing technology infrastructure and business processes.
                   </p>
                 </div>
-                <div className="space-y-3">
-                  <h3 className="text-lg font-semibold">Ongoing Support</h3>
-                  <p className="text-muted-foreground">
+                <div className="space-y-2 sm:space-y-3">
+                  <h3 className="text-base sm:text-lg font-semibold">Ongoing Support</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     Maintenance, optimization, and scaling support to ensure your AI systems continue delivering value.
                   </p>
                 </div>
@@ -114,33 +114,33 @@ export default function AboutUsPage() {
 
           {/* Our Commitment */}
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2 mb-6">
-                <CheckCircle className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-semibold">Our Commitment</h2>
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center space-x-2 mb-4 sm:mb-6">
+                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-semibold">Our Commitment</h2>
               </div>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-3">
-                  <Badge variant="secondary" className="mt-1">Technical Excellence</Badge>
-                  <p className="text-muted-foreground">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-start space-x-2 sm:space-x-3">
+                  <Badge variant="secondary" className="mt-1 text-xs sm:text-sm flex-shrink-0">Technical Excellence</Badge>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     We stay current with AI developments and apply proven methodologies to deliver reliable solutions.
                   </p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Badge variant="secondary" className="mt-1">Clear Communication</Badge>
-                  <p className="text-muted-foreground">
+                <div className="flex items-start space-x-2 sm:space-x-3">
+                  <Badge variant="secondary" className="mt-1 text-xs sm:text-sm flex-shrink-0">Clear Communication</Badge>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     Regular updates, transparent timelines, and honest assessments of what&#39;s achievable within your budget and timeframe.
                   </p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Badge variant="secondary" className="mt-1">Collaborative Process</Badge>
-                  <p className="text-muted-foreground">
+                <div className="flex items-start space-x-2 sm:space-x-3">
+                  <Badge variant="secondary" className="mt-1 text-xs sm:text-sm flex-shrink-0">Collaborative Process</Badge>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     We work as partners, not just vendors, ensuring knowledge transfer and building your team&#39;s AI capabilities.
                   </p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Badge variant="secondary" className="mt-1">Practical Focus</Badge>
-                  <p className="text-muted-foreground">
+                <div className="flex items-start space-x-2 sm:space-x-3">
+                  <Badge variant="secondary" className="mt-1 text-xs sm:text-sm flex-shrink-0">Practical Focus</Badge>
+                  <p className="text-sm sm:text-base text-muted-foreground">
                     Every solution is designed with real-world constraints in mind—your budget, timeline, and operational requirements.
                   </p>
                 </div>
@@ -150,9 +150,9 @@ export default function AboutUsPage() {
 
           {/* Next Steps / CTA */}
           <Card className="bg-primary/5 border-primary/20">
-            <CardContent className="p-6 text-center">
-              <h2 className="text-2xl font-semibold mb-4">Ready to Get Started?</h2>
-              <p className="text-muted-foreground leading-7 mb-6 max-w-2xl mx-auto">
+            <CardContent className="p-4 sm:p-6 text-center">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-4">Ready to Get Started?</h2>
+              <p className="text-sm sm:text-base text-muted-foreground leading-6 sm:leading-7 mb-6 max-w-2xl mx-auto">
                 If you&#39;re considering AI implementation for your business, we&#39;d be happy to discuss your specific 
                 challenges and explore potential solutions together.
               </p>

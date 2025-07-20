@@ -16,9 +16,9 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
             <Logo variant="monogram" size="sm" />
-            <span className="font-bold text-xl tracking-tight">
+            <span className="font-bold text-lg sm:text-xl tracking-tight truncate">
               {blogConfig.title}
             </span>
           </Link>

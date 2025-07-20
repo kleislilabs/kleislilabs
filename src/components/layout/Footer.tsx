@@ -6,13 +6,13 @@ import { Logo } from "@/components/ui/logo";
 export function Footer() {
   return (
     <footer className="border-t bg-background">
-      <div className="container py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container py-6 sm:py-8 md:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
+          <div className="space-y-3 sm:space-y-4 sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <Logo variant="monogram" size="sm" />
-              <h3 className="text-lg font-semibold">{blogConfig.title}</h3>
+              <h3 className="text-base sm:text-lg font-semibold">{blogConfig.title}</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               {blogConfig.tagline}

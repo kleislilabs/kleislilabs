@@ -16,15 +16,15 @@ export default function Home() {
     <Layout>
       <Container>
         {/* Hero Section */}
-        <section className="py-20 text-center">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="flex justify-center mb-6">
+        <section className="py-12 sm:py-16 md:py-20 text-center">
+          <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+            <div className="flex justify-center mb-4 sm:mb-6">
               <Logo variant="full" size="lg" showTagline={false} />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight px-4">
               <span className="text-primary">{blogConfig.tagline}</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               We help businesses implement practical artificial intelligence solutions that solve real problems and drive measurable results.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
