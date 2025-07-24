@@ -4,10 +4,10 @@
 
 export const blogConfig = {
   title: 'KleisliLabs',
-  description: 'From Vision to AI Reality - AI solutions built for real business problems',
+  description: 'Igniting Early-Stage AI Ventures - Technical firepower for ambitious AI founders',
   author: 'KleisliLabs Team',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-  tagline: 'From Vision to AI Reality',
+  tagline: 'Igniting Early-Stage AI Ventures',
   
   // Pagination settings
   postsPerPage: 10,

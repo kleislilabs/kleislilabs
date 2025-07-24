@@ -7,26 +7,79 @@ export function Footer() {
   return (
     <footer className="border-t bg-background">
       <div className="container py-6 sm:py-8 md:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
-          <div className="space-y-3 sm:space-y-4 sm:col-span-2 lg:col-span-1">
+          <div className="space-y-3 sm:space-y-4">
             <div className="flex items-center space-x-2 sm:space-x-3">
               <Logo variant="monogram" size="sm" />
               <h3 className="text-base sm:text-lg font-semibold">{blogConfig.title}</h3>
             </div>
             <p className="text-sm text-muted-foreground">
-              {blogConfig.tagline}
+              Igniting Early-Stage AI Ventures
             </p>
             <p className="text-sm text-muted-foreground">
-              AI solutions built for real business problems
+              Technical firepower for ambitious AI founders
             </p>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="text-sm font-semibold">Our Services</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link 
+                  href="/services" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  AI QuickStart
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Prompt Foundry
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Data Engine
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Model Clinic
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Investor Pack
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3 sm:space-y-4">
             <h4 className="text-sm font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              {blogConfig.navigation.map((item) => (
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/services', label: 'Services' },
+                { href: '/about', label: 'About' },
+                { href: '/blog', label: 'Blog' },
+                { href: '/contact', label: 'Contact' },
+              ].map((item) => (
                 <li key={item.href}>
                   <Link 
                     href={item.href} 

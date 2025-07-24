@@ -17,7 +17,7 @@ export default function Home() {
       <Container>
         {/* Hero Section */}
         <section className="py-12 sm:py-16 md:py-20 text-center">
-          <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+          <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-fade-up">
             <div className="flex justify-center mb-4 sm:mb-6">
               <Logo variant="full" size="lg" showTagline={false} />
             </div>
