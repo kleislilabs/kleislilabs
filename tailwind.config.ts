@@ -18,6 +18,13 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        navy: "#102A43",
+        flame: "#FF6F61",
+        teal: "#0EDDAA",
+        lightGray: "#F7FAFC",
+        darkGray: "#1C1C1E",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
