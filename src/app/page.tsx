@@ -5,8 +5,8 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { PostCard } from "@/components/blog/PostCard";
 import { Logo } from "@/components/ui/logo";
-import { blogConfig } from "@/lib/config";
-import { ArrowRight, BookOpen, Bot, Lightbulb, Target } from "lucide-react";
+import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { ArrowRight, Target, Mail } from "lucide-react";
 
 export default function Home() {
   const posts = getAllPostsMetadata();
@@ -21,23 +21,23 @@ export default function Home() {
             <div className="flex justify-center mb-4 sm:mb-6">
               <Logo variant="full" size="lg" showTagline={false} />
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight px-4">
-              <span className="text-primary">{blogConfig.tagline}</span>
+            <h1 className="text-hero px-4">
+              <span className="text-primary">Igniting Early-Stage AI Ventures</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-              We help businesses implement practical artificial intelligence solutions that solve real problems and drive measurable results.
+              From concept to Series A: Technical firepower for ambitious AI founders
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <Button size="lg" asChild>
-                <Link href="/about">
+                <Link href="/contact">
                   <Target className="mr-2 h-4 w-4" />
-                  Learn About Us
+                  Get Started
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/blog">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Read Our Blog
+                <Link href="/services">
+                  <ArrowRight className="mr-2 h-4 w-4" />
+                  View Services
                 </Link>
               </Button>
             </div>
@@ -73,43 +73,36 @@ export default function Home() {
           </section>
         )}
 
-        {/* Features Section */}
+        {/* Services Section */}
         <section className="py-16 border-t">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Our AI Solutions</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Our Services</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              We specialize in building practical AI applications that integrate seamlessly with your existing business processes.
+              Comprehensive AI solutions designed specifically for early-stage startups and ambitious founders.
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Bot className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold">Custom AI Development</h3>
-              <p className="text-muted-foreground">
-                Machine learning models, automation systems, and data analysis tools designed for your specific requirements.
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Lightbulb className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold">AI Strategy Consulting</h3>
-              <p className="text-muted-foreground">
-                Strategic guidance on where and how to implement AI within your organization, including feasibility assessments.
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4 sm:col-span-2 lg:col-span-1">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Target className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold">Integration & Support</h3>
-              <p className="text-muted-foreground">
-                Seamless integration with existing systems and ongoing support to ensure your AI solutions continue delivering value.
-              </p>
+          <ServicesGrid />
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-16 border-t">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Start Your AI Journey</h2>
+            <p className="text-muted-foreground mb-8">
+              Ready to transform your startup with AI? Let&apos;s discuss how we can accelerate your path to Series A.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <Link href="/contact">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Get in Touch
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/contact">
+                  Free AI Audit
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
