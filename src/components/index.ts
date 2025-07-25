@@ -11,9 +11,15 @@ export { PostHeader } from "./blog/PostHeader";
 export { PostNavigation } from "./blog/PostNavigation";
 export { TagCloud } from "./blog/TagCloud";
 
+// Home Components
+export { Features } from "./home/Features";
+
 // UI Components
 export { PageHeader } from "./ui/page-header";
 export { Container } from "./ui/container";
+export { CtaSection } from "./ui/CtaSection";
+export { Section } from "./ui/Section";
+export { IconCard } from "./ui/IconCard";
 
 // shadcn/ui Components (re-export for convenience)
 export { Button } from "./ui/button";
