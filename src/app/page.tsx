@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { getAllPostsMetadata } from "@/lib/posts";
 import { Layout } from "@/components/layout/Layout";
-import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { PostCard } from "@/components/blog/PostCard";
 import { Logo } from "@/components/ui/logo";
+import { Features } from "@/components/home/Features";
+import { CtaSection } from "@/components/ui/CtaSection";
+import { Section } from "@/components/ui/Section";
 import { blogConfig } from "@/lib/config";
-import { ArrowRight, BookOpen, Bot, Lightbulb, Target } from "lucide-react";
+import { ArrowRight, BookOpen, Target } from "lucide-react";
 
 export default function Home() {
   const posts = getAllPostsMetadata();
@@ -14,49 +16,56 @@ export default function Home() {
 
   return (
     <Layout>
-      <Container>
-        {/* Hero Section */}
-        <section className="py-20 text-center">
-          <div className="max-w-4xl mx-auto space-y-8">
+      {/* Hero Section */}
+      <Section spacing="lg" className="text-center" container={false}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto space-y-8">
             <div className="flex justify-center mb-6">
               <Logo variant="full" size="lg" showTagline={false} />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              <span className="text-primary">{blogConfig.tagline}</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We help businesses implement practical artificial intelligence solutions that solve real problems and drive measurable results.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-              <Button size="lg" asChild>
+            
+            <div className="space-y-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center">
+                <span className="text-primary">{blogConfig.tagline}</span>
+              </h1>
+              
+              <p className="text-xl sm:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed text-center">
+                We help businesses implement practical artificial intelligence solutions that solve real problems and drive measurable results.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <Button size="lg" className="text-lg px-8 py-3 w-full sm:w-auto" asChild>
                 <Link href="/about">
-                  <Target className="mr-2 h-4 w-4" />
+                  <Target className="mr-2 h-5 w-5" />
                   Learn About Us
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" className="text-lg px-8 py-3 w-full sm:w-auto" asChild>
                 <Link href="/blog">
-                  <BookOpen className="mr-2 h-4 w-4" />
+                  <BookOpen className="mr-2 h-5 w-5" />
                   Read Our Blog
                 </Link>
               </Button>
             </div>
           </div>
-        </section>
+        </div>
+      </Section>
 
-        {/* Featured Posts Section */}
-        {featuredPosts.length > 0 && (
-          <section className="py-12 sm:py-16">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 space-y-4 sm:space-y-0">
+      {/* Featured Posts Section */}
+      {featuredPosts.length > 0 && (
+        <Section spacing="lg" background="muted" container={false}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 space-y-4 sm:space-y-0">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
                   Latest Posts
                 </h2>
-                <p className="text-muted-foreground mt-2">
+                <p className="text-muted-foreground mt-2 text-lg">
                   Discover our most recent articles and insights
                 </p>
               </div>
-              <Button variant="outline" asChild>
+              <Button variant="outline" size="lg" asChild>
                 <Link href="/blog">
                   <span className="hidden sm:inline">View All Posts</span>
                   <span className="sm:hidden">All Posts</span>
@@ -65,55 +74,48 @@ export default function Home() {
               </Button>
             </div>
             
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {featuredPosts.map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
-          </section>
-        )}
+          </div>
+        </Section>
+      )}
 
-        {/* Features Section */}
-        <section className="py-16 border-t">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Our AI Solutions</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We specialize in building practical AI applications that integrate seamlessly with your existing business processes.
-            </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Bot className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold">Custom AI Development</h3>
-              <p className="text-muted-foreground">
-                Machine learning models, automation systems, and data analysis tools designed for your specific requirements.
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Lightbulb className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold">AI Strategy Consulting</h3>
-              <p className="text-muted-foreground">
-                Strategic guidance on where and how to implement AI within your organization, including feasibility assessments.
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4 sm:col-span-2 lg:col-span-1">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Target className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold">Integration & Support</h3>
-              <p className="text-muted-foreground">
-                Seamless integration with existing systems and ongoing support to ensure your AI solutions continue delivering value.
-              </p>
-            </div>
-          </div>
-        </section>
-      </Container>
+      {/* Features Section */}
+      <Section spacing="xl" container={false}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Features />
+        </div>
+      </Section>
+
+      {/* CTA Section */}
+      <Section spacing="lg" container={false}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <CtaSection
+            variant="primary"
+            size="lg"
+            title="Ready to Transform Your Business with AI?"
+            description="Let's discuss your specific challenges and explore how our AI solutions can drive measurable results for your organization."
+            actions={
+              <>
+                <Button size="lg" asChild>
+                  <Link href="/contact">
+                    Get In Touch
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/about">
+                    Learn More About Us
+                  </Link>
+                </Button>
+              </>
+            }
+          />
+        </div>
+      </Section>
     </Layout>
   );
 }

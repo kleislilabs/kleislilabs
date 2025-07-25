@@ -116,8 +116,31 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    /* Better font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Focus styles for better accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  
+  /* Improve readability */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  p {
+    text-wrap: pretty;
   }
 }
 
