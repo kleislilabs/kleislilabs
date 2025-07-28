@@ -237,8 +237,8 @@ Outsourcing is no longer a binary budget lever—it is a modular extension of yo
 
 [^60]: https://www.kdci.co/outsourcing-blog/post/the-cost-of-hiring-in-the-us-a-statistical-breakdown-vs-outsourcing-models
 
-[^61]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/aed5894af610644cf86645e53e56a23c/6f5c0550-336d-46a7-9229-26563ca2a9ea/ea344f9e.csv
+[^61]: [/blog_assets/ai-outsourcing-guide-2025/ai_engineer_salary_comparison_2025.csv](/blog_assets/ai-outsourcing-guide-2025/ai_engineer_salary_comparison_2025.csv)
 
-[^62]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/aed5894af610644cf86645e53e56a23c/6f5c0550-336d-46a7-9229-26563ca2a9ea/6fa3a1ea.csv
+[^62]: [/blog_assets/ai-outsourcing-guide-2025/ai_project_roi_examples_2025.csv](/blog_assets/ai-outsourcing-guide-2025/ai_project_roi_examples_2025.csv)
 
-[^63]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/aed5894af610644cf86645e53e56a23c/5705a0c0-dcb6-4c91-9cd5-a9218b79765b/aaeb8b19.csv
+[^63]: [/blog_assets/ai-outsourcing-guide-2025/in_house_vs_outsourcing_comparison_2025.csv](/blog_assets/ai-outsourcing-guide-2025/in_house_vs_outsourcing_comparison_2025.csv)
