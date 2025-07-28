@@ -16,16 +16,16 @@ In 2025 the decision to build an in-house AI team or tap external talent is no l
 ## Contents
 
 1. Executive Takeaways
-2. Market Context: 2025 Talent \& Cost Landscape
+2. Market Context: 2025 Talent & Cost Landscape
 3. The ROI Lens: Measuring What Matters
 4. Four Strategic Hiring Scenarios Re-visited
-5. Beyond Cost: Hidden Friction \& Opportunity Costs
-6. Decision Framework \& Checklist
+5. Beyond Cost: Hidden Friction & Opportunity Costs
+6. Decision Framework & Checklist
 7. Conclusion
 
 ## Executive Takeaways
 
-**1. Time has out-priced talent.** A US mid-level AI engineer now costs roughly \$192k in Year 1 when benefits, office, and onboarding are included, versus ~\$63k via a high-quality offshore partner—a 67% delta[^1][^2][^3].
+**1. Time has out-priced talent.** A US mid-level AI engineer now costs roughly $192k in Year 1 when benefits, office, and onboarding are included, versus ~$63k via a high-quality offshore partner—a 67% delta[^1][^2][^3].
 
 **2. Productivity gaps remain wide.** Senior GenAI talent in the US commands 10× Indian in-house salaries, yet ships only 2–3× faster on typical inference-heavy workloads, making offshore senior engineers (EU or India) the sweet spot for cost-per-unit-output[^4][^5][^6].
 
@@ -33,19 +33,19 @@ In 2025 the decision to build an in-house AI team or tap external talent is no l
 
 **4. Hybrid is the new default.** Winning teams keep a staff “spine” (CTO + product AI lead) and flex around it with specialised pods from trusted vendors, avoiding permanent overhead while retaining architectural control[^10][^11][^12].
 
-## 1. Market Context: 2025 Talent \& Cost Landscape
+## 1. Market Context: 2025 Talent & Cost Landscape
 
 Global AI hiring is up 67% YoY while overall tech postings fell 11%[^13][^14]. Salary inflation diverges sharply by region:
 
-![AI Engineer Salary Comparison Across Regions and Hiring Models (2025)](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/aed5894af610644cf86645e53e56a23c/16e82793-4ea5-43f1-9388-f8eede06bcef/15a8c319.png)
+![AI Engineer Salary Comparison Across Regions and Hiring Models (2025)](/blog_assets/ai-outsourcing-guide-2025/images/ai_salary_comparison.png)
 
-AI Engineer Salary Comparison Across Regions and Hiring Models (2025)
+*AI Engineer Salary Comparison Across Regions and Hiring Models (2025)*
 
 Key observations:
 
 - US talent premium persists (2–3× Eastern EU, 5–6× India).
 - Outsourced US rates dropped 10% as vendors adopt GenAI tooling gains[^10].
-- India’s senior bracket (<\$30k) still undercuts US entry level by 65%[^4][^6].
+- India's senior bracket (<$30k) still undercuts US entry level by 65%[^4][^6].
 
 
 ## 2. The ROI Lens: Measuring What Matters
@@ -56,11 +56,11 @@ Traditional “total dollars saved” is misleading. Founders should track:
 2. **Payback Period (months)** – cash-flow risk proxy.
 3. **Time-to-Impact** – months from idea to first production metric shift.
 
-![AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/aed5894af610644cf86645e53e56a23c/1d3cdbd5-5193-41ad-955b-95bd1a84ffa1/285f3549.png)
+![AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)](/blog_assets/ai-outsourcing-guide-2025/images/ai_project_roi.png)
 
-AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)
+*AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)*
 
-Projects with sub-\$100k budgets can clear 400% ROI in Year 1 if shipped inside one quarter; delays beyond six months erode ROI below 250% even on larger bets.
+Projects with sub-$100k budgets can clear 400% ROI in Year 1 if shipped inside one quarter; delays beyond six months erode ROI below 250% even on larger bets.
 
 ## 3. Four Strategic Scenarios Re-visited
 
@@ -71,19 +71,19 @@ Projects with sub-\$100k budgets can clear 400% ROI in Year 1 if shipped inside 
 | Low-income HQ, high-complexity moonshot | Local senior core + select offshore specialists | Local cost base already low; communication throughput key[^17][^18] |
 | Low-income HQ, routine features | Full in-house juniors | Payroll already minimal; context retention > vendor margin[^19] |
 
-## 4. Beyond Cost: Hidden Friction \& Opportunity Costs
+## 4. Beyond Cost: Hidden Friction & Opportunity Costs
 
 1. **Hiring Lead-Time** – median 3–4 months for senior AI devs in US; vendors start in 2 weeks[^20][^21].
-2. **Technical Debt Risk** – poorly-specified outsourcing inflates downstream refactor spend; mitigate with SLAs on code quality \& extensibility[^22][^23].
-3. **Compliance \& IP** – GDPR, US export controls, sector regs; choose vendors with prior domain certifications and airtight assignment clauses[^24][^25].
+2. **Technical Debt Risk** – poorly-specified outsourcing inflates downstream refactor spend; mitigate with SLAs on code quality & extensibility[^22][^23].
+3. **Compliance & IP** – GDPR, US export controls, sector regs; choose vendors with prior domain certifications and airtight assignment clauses[^24][^25].
 4. **Cultural/Time-zone Lag** – each 4-hour overlap drop adds ~7% cycle time according to McKinsey DevOps benchmarks; near-shore or split-shift teams offset this[^10][^26].
 
-## 5. Decision Framework \& Checklist
+## 5. Decision Framework & Checklist
 
 **Step 1 – Quantify Benefit**
 
-- Map feature to direct \$\$ or proxy KPI (churn ↓, CSAT ↑).
--  Use pilot baselines to estimate upside[^7][^27].
+- Map feature to direct $$ or proxy KPI (churn ↓, CSAT ↑).
+- Use pilot baselines to estimate upside[^7][^27].
 
 **Step 2 – Price Real Options**
 
@@ -96,7 +96,7 @@ Speed-to-launch, Cost, IP Safety, Flexibility, Talent Depth. Weight by business 
 **Step 4 – Mitigate Downsides**
 
 - Dual-track code reviews by retained architect.
-- Equity-linked milestone bonuses to vendors for align- ment[^11].
+- Equity-linked milestone bonuses to vendors for alignment[^11].
 - Contractual escrow for core model weights if vendor exits.
 
 
@@ -104,7 +104,7 @@ Speed-to-launch, Cost, IP Safety, Flexibility, Talent Depth. Weight by business 
 
 | Task | In-house Tip | Outsourcing Tip |
 | :-- | :-- | :-- |
-| Sourcing | Use LinkedIn “AI skills” filter + coding challenge within 72 h[^20] | Run 1-week paid PoC to test vendor quality \& comms[^24] |
+| Sourcing | Use LinkedIn "AI skills" filter + coding challenge within 72 h[^20] | Run 1-week paid PoC to test vendor quality & comms[^24] |
 | Onboarding | Pair with senior for 2-week shadow sprint | Demand vendor side KT doc + daily loom updates |
 | Tooling | Give Copilot/Cursor licences – 20% velocity bump | Ensure vendor IDEs comply with org SecOps baseline |
 | IP / Data | Internal repo gate + feature flags | Use compartmentalised access; share only synthetic sets |
@@ -155,7 +155,7 @@ Outsourcing is no longer a binary budget lever—it is a modular extension of yo
 
 [^19]: https://www.newindianexpress.com/business/2025/Jun/13/gen-ai-knowledge-now-increasingly-demanded-in-job-postings-report
 
-[^20]: https://millipixels.com/blog/Outsourcing-AI-Development-in-2025
+[^20]: Millipixels. "Outsourcing AI Development in 2025." Millipixels Blog. Available at: https://millipixels.com/blog/Outsourcing-AI-Development-in-2025
 
 [^21]: https://cutshort.io/blog/hiring/smart-ways-to-hire-developers-for-startups-in-2025
 
@@ -237,8 +237,8 @@ Outsourcing is no longer a binary budget lever—it is a modular extension of yo
 
 [^60]: https://www.kdci.co/outsourcing-blog/post/the-cost-of-hiring-in-the-us-a-statistical-breakdown-vs-outsourcing-models
 
-[^61]: [/blog_assets/ai-outsourcing-guide-2025/ai_engineer_salary_comparison_2025.csv](/blog_assets/ai-outsourcing-guide-2025/ai_engineer_salary_comparison_2025.csv)
+[^61]: Source data: [AI Engineer Salary Comparison (2025)](/blog_assets/ai-outsourcing-guide-2025/ai_engineer_salary_comparison_2025.csv) - Comprehensive salary data across regions and hiring models.
 
-[^62]: [/blog_assets/ai-outsourcing-guide-2025/ai_project_roi_examples_2025.csv](/blog_assets/ai-outsourcing-guide-2025/ai_project_roi_examples_2025.csv)
+[^62]: Source data: [AI Project ROI Examples (2025)](/blog_assets/ai-outsourcing-guide-2025/ai_project_roi_examples_2025.csv) - Real-world ROI calculations and payback periods.
 
-[^63]: [/blog_assets/ai-outsourcing-guide-2025/in_house_vs_outsourcing_comparison_2025.csv](/blog_assets/ai-outsourcing-guide-2025/in_house_vs_outsourcing_comparison_2025.csv)
+[^63]: Source data: [In-house vs Outsourcing Cost Comparison (2025)](/blog_assets/ai-outsourcing-guide-2025/in_house_vs_outsourcing_comparison_2025.csv) - Detailed cost breakdown analysis.
