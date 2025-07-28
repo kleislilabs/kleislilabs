@@ -117,6 +117,7 @@ Outsourcing is no longer a binary budget lever—it is a modular extension of yo
 
 <div style="text-align: center">⁂</div>
 
+<!-- Sources (hidden from render)
 [^1]: https://mailamengg.com/what-is-the-ai-engineer-salary-in-india-complete-2025-guide/
 
 [^2]: https://theddcgroup.com/business-process-insights/four-outsourcing-trends-to-watch-in-2025
@@ -242,3 +243,4 @@ Outsourcing is no longer a binary budget lever—it is a modular extension of yo
 [^62]: Source data: [AI Project ROI Examples (2025)](/blog_assets/ai-outsourcing-guide-2025/ai_project_roi_examples_2025.csv) - Real-world ROI calculations and payback periods.
 
 [^63]: Source data: [In-house vs Outsourcing Cost Comparison (2025)](/blog_assets/ai-outsourcing-guide-2025/in_house_vs_outsourcing_comparison_2025.csv) - Detailed cost breakdown analysis.
+-->
