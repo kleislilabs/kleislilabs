@@ -37,9 +37,8 @@ In 2025 the decision to build an in-house AI team or tap external talent is no l
 
 Global AI hiring is up 67% YoY while overall tech postings fell 11%[^13][^14]. Salary inflation diverges sharply by region:
 
-![AI Engineer Salary Comparison Across Regions and Hiring Models (2025)](/blog_assets/ai-outsourcing-guide-2025/images/ai_salary_comparison.png)
+![AI Engineer Salary Comparison Across Regions and Hiring Models (2025)](/blog_assets/ai-outsourcing-guide-2025/images/ai_salary_comparison.png " | AI Engineer Salary Comparison Across Regions and Hiring Models (2025)")
 
-*AI Engineer Salary Comparison Across Regions and Hiring Models (2025)*
 
 Key observations:
 
@@ -56,9 +55,8 @@ Traditional “total dollars saved” is misleading. Founders should track:
 2. **Payback Period (months)** – cash-flow risk proxy.
 3. **Time-to-Impact** – months from idea to first production metric shift.
 
-![AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)](/blog_assets/ai-outsourcing-guide-2025/images/ai_project_roi.png)
+![AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)](/blog_assets/ai-outsourcing-guide-2025/images/ai_project_roi.png "| AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)")
 
-*AI Project ROI vs Investment Analysis - Payback Period Comparison (2025)*
 
 Projects with sub-$100k budgets can clear 400% ROI in Year 1 if shipped inside one quarter; delays beyond six months erode ROI below 250% even on larger bets.
 
@@ -115,7 +113,6 @@ Speed-to-launch, Cost, IP Safety, Flexibility, Talent Depth. Weight by business 
 Outsourcing is no longer a binary budget lever—it is a modular extension of your engineering muscle. The startups winning in 2025 keep a lean core, plug specialised pods on demand, and measure everything in **months to validated KPI shift per dollar**. Use the salary and ROI benchmarks above to design that hybrid, high-leverage model—and redeploy the capital you save into shipping features before the next funding crunch hits.
 
 
-<div style="text-align: center">⁂</div>
 
 <!-- Sources (hidden from render)
 [^1]: https://mailamengg.com/what-is-the-ai-engineer-salary-in-india-complete-2025-guide/
