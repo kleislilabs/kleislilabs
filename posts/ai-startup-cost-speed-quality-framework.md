@@ -1,3 +1,12 @@
+---
+title: "Re-Engineering the Cost-Speed-Quality Triangle for AI Startups"
+date: "2025-08-01"
+excerpt: "Learn how AI founders can strategically choose a prime axis—quality, speed, or cost—and harness data, process, and offshore leverage to fast-track Series A."
+tags: ["AI Startups", "Cost Efficiency", "Speed to Market", "Quality Assurance", "MVP Strategy", "Offshore Development", "Series A", "Founder Playbook", "Case Studies", "AI Engineering"]
+author: "ipmob"
+---
+
+
 # Re-Engineering the Cost-Speed-Quality Triangle for AI Startups
 
 *Why early-stage founders must pick a core advantage—then weaponise data, process and offshore leverage to win Series A faster.*
