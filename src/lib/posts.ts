@@ -4,6 +4,8 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 import remarkGfm from 'remark-gfm';
+import { rehype } from 'rehype';
+import { rehypeImageContainer } from './rehype-image-container';
 import { PostData, PostMetadata, PostFrontmatter } from '../types/post';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -22,11 +24,18 @@ function calculateReadingTime(text: string): number {
  * Convert markdown content to HTML
  */
 async function markdownToHtml(markdown: string): Promise<string> {
-  const result = await remark()
+  // First convert markdown to HTML
+  const markdownResult = await remark()
     .use(remarkGfm)
     .use(remarkHtml)
     .process(markdown);
-  return result.toString();
+  
+  // Then process the HTML to add image containers
+  const htmlResult = await rehype()
+    .use(rehypeImageContainer)
+    .process(markdownResult.toString());
+  
+  return htmlResult.toString();
 }
 
 /**
