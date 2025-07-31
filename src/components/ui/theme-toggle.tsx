@@ -5,36 +5,92 @@ import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
 
-export function ThemeToggle() {
-  const { setTheme } = useTheme()
+interface ThemeToggleProps {
+  className?: string
+}
+
+export function ThemeToggle({ className }: ThemeToggleProps) {
+  const { theme, setTheme, systemTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button 
+        variant="ghost" 
+        size="sm" 
+        className={cn("relative h-9 w-[72px]", className)} 
+        disabled
+        aria-label="Theme toggle loading"
+      >
+        <div className="flex h-7 w-[68px] items-center rounded-full bg-muted p-1">
+          <div className="h-5 w-5 rounded-full bg-background shadow-sm" />
+        </div>
+      </Button>
+    )
+  }
+
+  const currentTheme = theme === "system" ? systemTheme : theme
+  const isDark = currentTheme === "dark"
+
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark")
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={toggleTheme}
+      className={cn(
+        // sizing & layout
+        "relative h-9 w-[72px] px-0 hover:bg-transparent",
+        // keyboard focus
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        className,
+      )}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      aria-pressed={isDark}
+      title={`Switch to ${isDark ? "light" : "dark"} mode`}
+    >
+      {/* track */}
+      <div
+        className={cn(
+          "flex h-7 w-[68px] items-center rounded-full p-1 transition-colors motion-safe:duration-200",
+          isDark ? "bg-zinc-700" : "bg-zinc-200",
+        )}
+      >
+        {/* knob */}
+        <div
+          className={cn(
+            "h-6 w-6 rounded-full shadow-sm motion-safe:transition-transform",
+            isDark
+              ? "translate-x-[36px] bg-zinc-900"
+              : "translate-x-0 bg-white",
+          )}
+        />
+
+        {/* icons - higher z-index so they remain visible */}
+        <Sun
+          className={cn(
+            "pointer-events-none absolute left-[9px] z-10 h-3.5 w-3.5 transition-opacity",
+            isDark ? "opacity-50" : "opacity-100",
+          )}
+          aria-hidden="true"
+        />
+        <Moon
+          className={cn(
+            "pointer-events-none absolute right-[9px] z-10 h-3.5 w-3.5 transition-opacity",
+            isDark ? "opacity-100" : "opacity-50",
+          )}
+          aria-hidden="true"
+        />
+      </div>
+    </Button>
   )
 }

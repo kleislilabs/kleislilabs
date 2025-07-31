@@ -1,0 +1,12 @@
+Cost_Factor,In_House_USD,Outsourced_USD,Savings_USD
+Initial Hiring Cost,15000,5000,10000.0
+Annual Salary (Mid-level AI Engineer),120000,45000,75000.0
+Benefits & Insurance,24000,0,24000.0
+Office Space & Equipment,8000,2000,6000.0
+Training & Onboarding,10000,3000,7000.0
+Management Overhead,15000,8000,7000.0
+Total Year 1 Cost,192000,63000,129000.0
+Total Year 2 Cost,167000,55000,112000.0
+Flexibility (1-10 scale),4,9,
+Speed to Market (months),6,2,
+Access to Latest Tech (1-10 scale),6,9,

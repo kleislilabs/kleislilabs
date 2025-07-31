@@ -20,6 +20,7 @@ export { Container } from "./ui/container";
 export { CtaSection } from "./ui/CtaSection";
 export { Section } from "./ui/Section";
 export { IconCard } from "./ui/IconCard";
+export { ImageContainer } from "./ui/ImageContainer";
 
 // shadcn/ui Components (re-export for convenience)
 export { Button } from "./ui/button";

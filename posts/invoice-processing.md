@@ -1,8 +1,10 @@
 ---
-title: "Revolutionizing Wealth Management for HNIs with AI: Real-Time Portfolio Insights at Scale"
+title: "Revolutionizing Wealth Management with AI: Real-Time Portfolio Insights at Scale"
 date: "2025-01-13"
 excerpt: "Discover how our consultancy built an AI-powered system that delivers real-time, human-like portfolio insights for high net-worth individuals by integrating LLMs, advanced data extraction, and scalable cloud infrastructure."
 tags: ["AI", "Wealth Management", "Fintech", "LLM", "Automation", "Cloud", "Portfolio", "Data Integration", "Case Study"]
+author: "ipmob"
+---
 author: "ipmob"
 ---
 
@@ -31,7 +33,7 @@ We designed an AI-powered system to emulate a human wealth manager, providing co
 3. **Natural Language Response Generation**
    - The LLM synthesizes extracted data, delivering concise, client-friendly responses in natural language, tailored to the query’s tone and context.
 
-    ![Architecture Diagram](/blog_assets/revolutionizing-wealth-management-with-ai/architecture-diagram.png)
+    ![System Architecture Overview](/blog_assets/revolutionizing-wealth-management-with-ai/architecture-diagram.png "AI-Powered Wealth Management System|This diagram illustrates the complete architecture of our AI-powered wealth management system, showing the flow from data ingestion through LLM processing to client-facing natural language responses.")
 
 ## Technical Depth
 - **LLM Integration**: Leveraged Grok 3’s DeepSearch and DeeperSearch modes to iteratively fetch and validate data, ensuring high accuracy.
