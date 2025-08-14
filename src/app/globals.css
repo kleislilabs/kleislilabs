@@ -162,6 +162,66 @@
   }
 }
 
+/* Citation link styles and preview */
+@layer components {
+  a.citation-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  a.citation-link:hover .citation-pill {
+    border-color: var(--border);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+  a.citation-link:focus-visible .citation-pill {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .citation-sup {
+    font-size: 0.85em;
+  }
+  .citation-pill {
+    display: inline-block;
+    padding: 0.125rem 0.375rem; /* ~2px vertical, ~6px horizontal */
+    border-radius: 0.375rem; /* smaller radius: rectangular with soft edges */
+    background: var(--muted);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    font-size: 0.618em;
+    line-height: 1; /* compact */
+    font-family: inherit; /* system UI */
+    font-weight: 500; /* semi-bold for readability */
+    letter-spacing: 0.001em;
+    white-space: nowrap;
+  }
+  .citation-pill .citation-count {
+    color: var(--muted-foreground);
+    margin-left: 0.25rem;
+    font-weight: 500;
+  }
+  .citation-preview {
+    position: absolute;
+    z-index: 60;
+    width: 360px;
+    height: 260px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: opacity 0.12s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .citation-preview iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: var(--card);
+  }
+}
+
 /* Ensure tables are mobile responsive */
 @media (max-width: 640px) {
   table {

@@ -4,7 +4,7 @@ import { generatePostMetadata, generatePostStructuredData } from "@/lib/seo";
 import { Layout } from "@/components/layout/Layout";
 import { Container } from "@/components/ui/container";
 import { PostHeader } from "@/components/blog/PostHeader";
-import { PostContent } from "@/components/blog/PostContent";
+import { PostContentWithEnhancements } from "@/components/blog/PostContent";
 import { PostNavigation } from "@/components/blog/PostNavigation";
 import { Metadata } from "next";
 
@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <PostHeader post={post} />
           
           <div className="mt-6 sm:mt-8">
-            <PostContent content={post.content} />
+            <PostContentWithEnhancements content={post.content} />
           </div>
           
           <PostNavigation 

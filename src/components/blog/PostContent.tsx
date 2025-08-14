@@ -1,3 +1,5 @@
+import { CitationPreviewInit } from './CitationPreviewInit';
+
 interface PostContentProps {
   content: string;
 }
@@ -29,5 +31,14 @@ export function PostContent({ content }: PostContentProps) {
         [&>hr]:my-8 sm:[&>hr]:my-12 [&>hr]:border-border [&>hr]:border-t-2"
       dangerouslySetInnerHTML={{ __html: content }}
     />
+  );
+}
+
+export function PostContentWithEnhancements({ content }: PostContentProps) {
+  return (
+    <>
+      <CitationPreviewInit />
+      <PostContent content={content} />
+    </>
   );
 }
