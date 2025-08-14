@@ -162,6 +162,46 @@
   }
 }
 
+/* Citation link styles and preview */
+@layer components {
+  a.citation-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  a.citation-link:hover .citation-pill {
+    border-color: var(--border);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+  a.citation-link:focus-visible .citation-pill {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .citation-sup {
+    font-size: 0.85em;
+  }
+  .citation-pill {
+    display: inline-block;
+    padding: 0.125rem 0.375rem; /* ~2px vertical, ~6px horizontal */
+    border-radius: 0.375rem; /* smaller radius: rectangular with soft edges */
+    background: var(--muted);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    font-size: 0.618em;
+    line-height: 1; /* compact */
+    font-family: inherit; /* system UI */
+    font-weight: 500; /* semi-bold for readability */
+    letter-spacing: 0.001em;
+    white-space: nowrap;
+  }
+  .citation-pill .citation-count {
+    color: var(--muted-foreground);
+    margin-left: 0.25rem;
+    font-weight: 500;
+  }
+}
+
 /* Ensure tables are mobile responsive */
 @media (max-width: 640px) {
   table {
@@ -180,4 +220,56 @@
   button, .btn {
     min-height: 44px;
   }
+}
+
+/* Enhanced table styles for markdown blog content */
+.prose table, table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2rem;
+  background: var(--card, #fff);
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 0.03);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose thead, thead {
+  background: var(--muted, #f9fafb);
+}
+
+.prose th, th {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid var(--border, #e5e7eb);
+  background: var(--muted, #f9fafb);
+  color: var(--foreground, #222);
+}
+
+.prose td, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  color: var(--foreground, #222);
+}
+
+.prose tr:last-child td, tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tbody tr:nth-child(even), tbody tr:nth-child(even) {
+  background: var(--muted, #f9fafb);
+}
+
+.prose th:focus, .prose td:focus, th:focus, td:focus {
+  outline: 2px solid var(--ring, #6366f1);
+  outline-offset: 2px;
+}
+
+.prose table caption, table caption {
+  caption-side: bottom;
+  padding: 0.5rem 1rem;
+  color: var(--muted-foreground, #6b7280);
+  font-size: 0.95em;
+  text-align: left;
 }

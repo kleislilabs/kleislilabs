@@ -4,7 +4,9 @@ import { generatePostMetadata, generatePostStructuredData } from "@/lib/seo";
 import { Layout } from "@/components/layout/Layout";
 import { Container } from "@/components/ui/container";
 import { PostHeader } from "@/components/blog/PostHeader";
-import { PostContent } from "@/components/blog/PostContent";
+import { PostContentWithEnhancements } from "@/components/blog/PostContent";
+import fs from "fs";
+import path from "path";
 import { PostNavigation } from "@/components/blog/PostNavigation";
 import { Metadata } from "next";
 
@@ -47,6 +49,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const { previousPost, nextPost } = getAdjacentPosts(slug);
   const structuredData = generatePostStructuredData(post);
+  const previewsPath = path.join(process.cwd(), "public", "previews", `${slug}.json`);
+  let previews: Record<string, unknown> = {};
+  if (fs.existsSync(previewsPath)) {
+    try {
+      previews = JSON.parse(fs.readFileSync(previewsPath, "utf8"));
+    } catch {}
+  }
 
   return (
     <Layout>
@@ -55,7 +64,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <PostHeader post={post} />
           
           <div className="mt-6 sm:mt-8">
-            <PostContent content={post.content} />
+            <PostContentWithEnhancements content={post.content} />
           </div>
           
           <PostNavigation 
@@ -71,6 +80,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData),
         }}
+      />
+      {/* Citation previews (build-time inlined) */}
+      <script
+        id="citation-previews"
+        type="application/json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(previews) }}
       />
     </Layout>
   );

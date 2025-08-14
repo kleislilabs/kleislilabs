@@ -1,3 +1,5 @@
+import { CitationPreviewInit } from './CitationPreviewInit';
+
 interface PostContentProps {
   content: string;
 }
@@ -19,7 +21,9 @@ export function PostContent({ content }: PostContentProps) {
         [&>blockquote]:border-l-4 [&>blockquote]:border-primary [&>blockquote]:pl-6 sm:[&>blockquote]:pl-8 [&>blockquote]:py-4 [&>blockquote]:bg-muted/30 [&>blockquote]:rounded-r-lg [&>blockquote]:italic [&>blockquote]:mb-6 sm:[&>blockquote]:mb-8 [&>blockquote]:text-base sm:[&>blockquote]:text-lg [&>blockquote]:leading-7 sm:[&>blockquote]:leading-8
         [&>pre]:bg-muted/50 [&>pre]:border [&>pre]:p-4 sm:[&>pre]:p-6 [&>pre]:rounded-xl [&>pre]:mb-6 sm:[&>pre]:mb-8 [&>pre]:overflow-x-auto [&>pre]:text-sm sm:[&>pre]:text-base [&>pre]:leading-6 [&>pre]:shadow-sm
         [&>code]:bg-muted/60 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded-md [&>code]:text-sm sm:[&>code]:text-base [&>code]:font-mono [&>code]:border
-        [&>img]:rounded-xl [&>img]:shadow-lg [&>img]:mb-6 sm:[&>img]:mb-8 [&>img]:w-full [&>img]:h-auto [&>img]:border
+        [&>.image-container-wrapper]:my-8 sm:[&>.image-container-wrapper]:my-10
+        [&>.image-container-wrapper>div]:rounded-2xl [&>.image-container-wrapper>div]:border-2 [&>.image-container-wrapper>div]:border-border/30
+        [&>.image-container-wrapper>div:hover]:shadow-xl [&>.image-container-wrapper>div:hover]:border-border/50
         [&>table]:w-full [&>table]:border-collapse [&>table]:mb-6 sm:[&>table]:mb-8 [&>table]:text-sm sm:[&>table]:text-base [&>table]:shadow-sm [&>table]:rounded-lg [&>table]:overflow-hidden [&>table]:border
         [&>th]:border [&>th]:border-border [&>th]:bg-muted/50 [&>th]:p-3 sm:[&>th]:p-4 [&>th]:text-sm sm:[&>th]:text-base [&>th]:font-semibold [&>th]:text-left
         [&>td]:border [&>td]:border-border [&>td]:p-3 sm:[&>td]:p-4 [&>td]:text-sm sm:[&>td]:text-base
@@ -27,5 +31,14 @@ export function PostContent({ content }: PostContentProps) {
         [&>hr]:my-8 sm:[&>hr]:my-12 [&>hr]:border-border [&>hr]:border-t-2"
       dangerouslySetInnerHTML={{ __html: content }}
     />
+  );
+}
+
+export function PostContentWithEnhancements({ content }: PostContentProps) {
+  return (
+    <>
+      <CitationPreviewInit />
+      <PostContent content={content} />
+    </>
   );
 }

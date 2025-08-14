@@ -4,73 +4,148 @@ A modern, performant static blog built with Next.js 15, TypeScript, and Markdown
 
 ## Features
 
-- 🚀 **Next.js 15** with App Router
-- 📝 **Markdown Support** for blog posts
-- 🎨 **Tailwind CSS** for styling
-- 🔒 **TypeScript** for type safety
-- 📱 **Responsive Design**
-- ⚡ **Static Site Generation** for fast loading
-- 🔍 **SEO Optimized**
+- 🚀 Next.js 15 with App Router
+- 📝 Markdown posts in `posts/`
+- 🎨 Tailwind CSS styling
+- 🔒 TypeScript
+- ⚡ Static Site Generation (SSG)
+- 🔍 SEO metadata and JSON-LD
+- 📑 Perplexity-style citation pills with hover previews
 
 ## Project Structure
 
 ```
+kleislilabs/
+├── posts/                          # Markdown blog posts
+├── public/
+│   └── previews/                   # Build-time citation previews per post (JSON)
+├── scripts/
+│   └── build-citation-previews.mjs # Prebuild crawler for citations
 ├── src/
-│   ├── app/                 # App Router pages
-│   ├── components/          # React components
-│   │   ├── blog/           # Blog-specific components
-│   │   ├── layout/         # Layout components
-│   │   └── ui/             # UI components
-│   ├── lib/                # Utility functions
-│   └── types/              # TypeScript type definitions
-├── posts/                  # Markdown blog posts
-└── public/                 # Static assets
+│   ├── app/
+│   │   └── blog/[slug]/page.tsx    # Blog post page (reads inlined previews)
+│   ├── components/
+│   │   ├── blog/
+│   │   │   ├── PostContent.tsx
+│   │   │   └── CitationPreviewInit.tsx
+│   │   └── ui/
+│   ├── lib/
+│   │   ├── citations/
+│   │   │   ├── build-cache.ts      # (used by prebuild script)
+│   │   │   ├── extract.ts          # [^n]: URL extraction
+│   │   │   └── fetch-firecrawl.ts  # HTTP metadata fetcher (brand image + meta)
+│   │   ├── rehype-citations.ts     # Turns [^n] into domain pills + data attrs
+│   │   └── posts.ts                # Markdown→HTML + rehype pipeline
+│   └── types/
+│       └── citation.ts             # CitationPreview types
+└── README.md
 ```
 
-## Getting Started
+## Environment
 
-### Development
+Create `.env.local` (not committed):
 
-First, run the development server:
+```
+# Only needed if you switch back to the Firecrawl SaaS SDK (currently not used)
+FIRECRAWL_API_KEY=fc-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+No secrets are required for the default HTTP metadata fetcher.
+
+## Development
 
 ```bash
+npm i
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-### Adding Blog Posts
+## Blogging workflow
 
-1. Create a new `.md` file in the `posts/` directory
-2. Add frontmatter with title, date, excerpt, and tags
-3. Write your content in Markdown
-4. The blog will automatically generate the page
+1. Add a Markdown file to `posts/your-post.md`.
+2. Include frontmatter:
 
-Example post structure:
 ```markdown
 ---
 title: "Your Post Title"
 date: "2025-01-13"
-excerpt: "Brief description of your post"
+excerpt: "Brief description"
 tags: ["nextjs", "blog"]
 ---
-
-# Your Post Content
-
-Write your blog post content here...
 ```
 
-## Learn More
+3. Use citations as lines anywhere in the file (often in a Sources comment):
 
-To learn more about Next.js, take a look at the following resources:
+```
+[^1]: https://example.com/page
+[^2]: https://another.com/article
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. In text, reference citations with `[^1]`, `[^2]`. The renderer will convert consecutive `[^n]` into compact domain pills like `example.com +1`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Build and previews
 
-## Deploy on Vercel
+Citation hovercards use build-time previews with title/description/siteLogoUrl, generated once and embedded.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Previews are built before Next’s SSG by `scripts/build-citation-previews.mjs`.
+- Output is written to `public/previews/[slug].json`.
+- The page reads and inlines this JSON; no runtime network calls on hover.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Commands:
+
+```bash
+# Build previews for all posts, then Next build
+npm run build
+
+# Force refresh previews for a post, then rebuild
+rm -f public/previews/ai-outsourcing-guide-2025.json
+npm run build
+```
+
+### How previews are generated
+
+- Extract: `src/lib/citations/extract.ts` scans markdown for `[^n]: URL` lines.
+- Fetch: `src/lib/citations/fetch-firecrawl.ts` uses direct HTTP GETs to fetch HTML and parse:
+  - title: og:title → twitter:title → <title>
+  - description: og:description → description → twitter:description
+  - siteLogoUrl: link[rel=icon] → twitter:image → og:image (absolute URL)
+  - image: og:image → twitter:image (for future use)
+- Throttling & logging:
+  - 1 request at a time, ~1.5s delay in prebuild (adjust in script) with detailed logs (status, size, truncated notes).
+
+### Styling & behavior
+
+- Citation pills are compact rounded rectangles with domain label and optional `+N` when several consecutive citations share the same domain.
+- Hovercard is a small popover with title, description (if any), and uses `siteLogoUrl` when available; click opens the source in a new tab.
+
+## Common issues
+
+- Build takes too long and fails:
+  - Ensure previews are generated in prebuild (they are). Do not delete `public/previews/*.json` before build unless you intend to re-crawl.
+
+- No hovercard on some pills:
+  - Some sources don’t expose title/description meta; the pill still opens the source.
+
+- Brand image missing:
+  - `siteLogoUrl` falls back to `link[rel=icon]`. Not all sites provide icons; the card renders without an image.
+
+## Scripts
+
+- `npm run dev` — start Next dev (Turbopack)
+- `npm run build` — run prebuild previews then SSG
+- `npm start` — serve production build
+
+## Contributing
+
+- Keep code DRY and typed. Shared logic under `src/lib/citations/*` and `src/lib/rehype-citations.ts`.
+- For UI, keep styles in `src/app/globals.css` under the citation section (`.citation-link`, `.citation-pill`, `.citation-count`).
+- Prefer small, focused PRs with a brief summary of:
+  - What changed
+  - Why
+  - Any user-facing impact
+
+## References
+
+- Next.js docs: https://nextjs.org/docs
+- Tailwind CSS: https://tailwindcss.com/docs

@@ -17,6 +17,7 @@ export interface PostData {
   frontmatter: PostFrontmatter;
   content: string;
   readingTime: number;
+  rawMarkdown?: string;
 }
 
 export interface PostMetadata {
