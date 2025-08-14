@@ -8,7 +8,7 @@ export function CitationPreviewInit() {
     let hideTimer: number | null = null;
     let openTimer: number | null = null;
 
-    type Preview = { url: string; domain: string; title?: string; description?: string; favicon?: string; image?: string };
+    type Preview = { url: string; domain: string; title?: string; description?: string; siteLogoUrl?: string; image?: string };
     const getPreviews = (): Record<string, Preview> => {
       // Prefer a global if present
       const w = window as unknown as { __CITATION_PREVIEWS__?: Record<string, Preview> };
@@ -39,10 +39,13 @@ export function CitationPreviewInit() {
       wrap.style.display = 'grid';
       wrap.style.gridTemplateColumns = 'auto 1fr';
       wrap.style.gap = '10px';
+      wrap.style.wordWrap = 'break-word';
+      wrap.style.overflowWrap = 'break-word';
+      wrap.style.hyphens = 'auto';
 
-      if (data.favicon) {
+      if (data.siteLogoUrl) {
         const ico = document.createElement('img');
-        ico.src = data.favicon;
+        ico.src = data.siteLogoUrl;
         ico.alt = '';
         ico.width = 20;
         ico.height = 20;
@@ -62,10 +65,20 @@ export function CitationPreviewInit() {
       title.textContent = data.title;
       title.style.fontWeight = '600';
       title.style.marginBottom = '4px';
+      title.style.wordWrap = 'break-word';
+      title.style.overflowWrap = 'break-word';
+      title.style.lineHeight = '1.3';
       const desc = document.createElement('div');
       if (data.description) desc.textContent = data.description;
       desc.style.fontSize = '0.85em';
       desc.style.color = 'var(--muted-foreground)';
+      desc.style.wordWrap = 'break-word';
+      desc.style.overflowWrap = 'break-word';
+      desc.style.lineHeight = '1.4';
+      desc.style.display = '-webkit-box';
+      desc.style.webkitLineClamp = '3';
+      desc.style.webkitBoxOrient = 'vertical';
+      desc.style.overflow = 'hidden';
       col.appendChild(title);
       if (data.description) col.appendChild(desc);
       wrap.appendChild(col);
@@ -77,7 +90,7 @@ export function CitationPreviewInit() {
       const top = rect.top + scrollY + rect.height + 8;
       const left = Math.min(
         scrollX + rect.left,
-        scrollX + window.innerWidth - 380
+        scrollX + window.innerWidth - 420
       );
       el.style.top = `${top}px`;
       el.style.left = `${left}px`;

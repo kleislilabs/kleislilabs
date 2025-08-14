@@ -203,16 +203,20 @@
   .citation-preview {
     position: absolute;
     z-index: 60;
-    width: 360px;
-    height: 260px;
+    min-width: 280px;
+    max-width: 400px;
+    width: auto;
+    max-height: 320px;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 0.5rem;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    overflow: hidden;
+    overflow: auto;
     transition: opacity 0.12s ease-in-out;
     opacity: 0;
     pointer-events: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   .citation-preview iframe {
     width: 100%;
