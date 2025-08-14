@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { rehype } from 'rehype';
 import { rehypeImageContainer } from './rehype-image-container';
 import { rehypeCitations } from './rehype-citations';
+import { extractCitationMap } from './citations/extract';
 import { PostData, PostMetadata, PostFrontmatter } from '../types/post';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -26,26 +27,13 @@ function calculateReadingTime(text: string): number {
  * [^7]: https://example.com/...
  * Works even when inside HTML comments.
  */
-function extractCitationsFromMarkdown(markdown: string): Record<string, string> {
-  const citations: Record<string, string> = {};
-  const regex = /^\[\^(\d+)\]:\s*(.+)$/gm;
-  let match: RegExpExecArray | null;
-  while ((match = regex.exec(markdown)) !== null) {
-    const id = match[1];
-    const rightSide = match[2].trim();
-    const urlMatch = rightSide.match(/https?:\/\/\S+/);
-    if (urlMatch) {
-      citations[id] = urlMatch[0];
-    }
-  }
-  return citations;
-}
+// Use shared extractor (DRY)
 
 /**
  * Convert markdown content to HTML
  */
 async function markdownToHtml(markdown: string): Promise<string> {
-  const citations = extractCitationsFromMarkdown(markdown);
+  const citations = extractCitationMap(markdown);
   // First convert markdown to HTML
   const markdownResult = await remark()
     .use(remarkGfm)
@@ -154,6 +142,7 @@ export async function getPostData(slug: string): Promise<PostData> {
     slug,
     frontmatter,
     content: htmlContent,
+    rawMarkdown: content,
     readingTime,
   };
 }

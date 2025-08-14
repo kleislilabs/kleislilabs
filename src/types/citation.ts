@@ -4,7 +4,7 @@ export interface CitationPreview {
   domain: string;
   title: string;
   description: string;
-  favicon?: string;
+  siteLogoUrl?: string;
   image?: string;
 }
 

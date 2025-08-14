@@ -11,10 +11,21 @@ export type CitationMap = Record<string, string>;
 export function rehypeCitations(options: { citations: CitationMap }) {
   const { citations } = options || { citations: {} };
 
+  // Resolve a human-friendly domain for a URL, falling back safely.
+  const resolveDomain = (url: string): string => {
+    const parsed = getDomain(url);
+    if (parsed) return parsed;
+    try {
+      return new URL(url).hostname;
+    } catch {
+      return url;
+    }
+  };
+
   return (tree: Root) => {
     visit(tree as unknown as Root, 'text', ((node: Text, index?: number, parent?: Element) => {
       if (!parent || typeof index !== 'number') return;
-      if (!node.value) return;
+      if (!node.value || Object.keys(citations).length === 0) return;
 
       const pattern = /\[\^(\d+)\]/g; // matches [^7]
       const original = node.value;
@@ -61,7 +72,7 @@ export function rehypeCitations(options: { citations: CitationMap }) {
         const m = matches[i];
         const start = m.index as number;
         const mText = m[0];
-        // const id = m[1];
+        // m[1] is the citation id, used when building anchors per-domain below
 
         // Push preceding text
         if (start > cursor) {
@@ -89,7 +100,7 @@ export function rehypeCitations(options: { citations: CitationMap }) {
           const idK = matches[k][1];
           const urlK = citations[idK];
           if (!urlK) continue;
-          const domainK = getDomain(urlK) || (() => { try { return new URL(urlK).hostname; } catch { return urlK; } })();
+          const domainK = resolveDomain(urlK);
           domainCounts[domainK] = (domainCounts[domainK] || 0) + 1;
           if (!domainToFirstId[domainK]) domainToFirstId[domainK] = idK;
         }
@@ -100,7 +111,7 @@ export function rehypeCitations(options: { citations: CitationMap }) {
           const idK = matches[k][1];
           const urlK = citations[idK];
           if (!urlK) continue;
-          const domainK = getDomain(urlK) || (() => { try { return new URL(urlK).hostname; } catch { return urlK; } })();
+          const domainK = resolveDomain(urlK);
           if (renderedDomains.has(domainK)) continue;
           renderedDomains.add(domainK);
           const count = domainCounts[domainK] || 1;
