@@ -2,19 +2,13 @@
 
 import React, { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import { Inter } from 'next/font/google'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
-
-const inter = Inter({ 
-  subsets: ['latin'], 
-  weight: ['300', '400'] 
-})
 
 interface LogoProps {
   variant?: 'full' | 'monogram'
   size?: 'sm' | 'md' | 'lg'
   className?: string
-  showTagline?: boolean
 }
 
 const LogoMark = ({ isDark }: { isDark: boolean }) => (
@@ -51,43 +45,13 @@ const LogoMark = ({ isDark }: { isDark: boolean }) => (
   </>
 )
 
-const LogoFull = ({ isDark, showTagline = false }: { isDark: boolean; showTagline?: boolean }) => (
-  <svg viewBox="0 0 280 60" className="h-full w-auto" role="img" aria-label="KleisliLabs logo">
-    {/* Logo Mark - Scaled down to 80% around center, raised slightly for better midline alignment */}
-    <g transform="translate(30, 28) scale(0.618) translate(-30, -28)">
-      <g transform="translate(6, 6)">
-        <LogoMark isDark={isDark} />
-      </g>
-    </g>
-    
-    {/* Company Name - Moved closer to logo */}
-    <text x="52" y="33" 
-          className={inter.className}
-          fontSize="33" 
-          fontWeight="300" 
-          fill={isDark ? "#f8fafc" : "#1e3a8a"}
-          letterSpacing="-0.5"
-          dominantBaseline="middle">KleisliLabs</text>
-    
-    {/* Tagline */}
-    {showTagline && (
-      <text x="52" dy="20" y="33"
-            className={inter.className}
-            fontSize="12" 
-            fontWeight="400" 
-            fill={isDark ? "#cbd5e1" : "#64748b"}
-            opacity={isDark ? "0.9" : "1"}>From Vision to AI Reality</text>
-    )}
-  </svg>
-)
-
-const LogoMonogram = ({ isDark }: { isDark: boolean }) => (
-  <svg viewBox="0 0 64 64" className="h-full w-auto" role="img" aria-label="KleisliLabs logo">
+const LogoMonogram = ({ isDark, className }: { isDark: boolean; className?: string }) => (
+  <svg viewBox="0 0 64 64" className={cn("h-full w-auto", className)} role="img" aria-label="KleisliLabs logo">
     <rect width="64" height="64" rx="12" fill={isDark ? "#1e3a8a" : "#f8fafc"} 
           stroke={isDark ? "none" : "#e2e8f0"} strokeWidth={isDark ? "0" : "1"} />
     
     <g transform="translate(8, 8)" opacity="0.95">
-      <LogoMark isDark={isDark === false} />
+      <LogoMark isDark={isDark} />
     </g>
   </svg>
 )
@@ -96,7 +60,6 @@ export function Logo({
   variant = 'full',
   size = 'md',
   className,
-  showTagline = false,
 }: LogoProps) {
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
@@ -106,34 +69,49 @@ export function Logo({
   }, [])
 
   if (!mounted) {
-    return null
+    return (
+      <div className={cn(
+        'flex items-center',
+        size === 'sm' ? 'h-8' : size === 'md' ? 'h-12' : 'h-16',
+        className
+      )} />
+    )
   }
 
-  const isDark = resolvedTheme === 'dark'
+  const isDark = resolvedTheme === 'dark' ? true : false
 
-  const sizeClasses = {
-    sm: variant === 'full' ? 'h-8' : 'h-8 w-8',
-    md: variant === 'full' ? 'h-12' : 'h-12 w-12',
-    lg: variant === 'full' ? 'h-16' : 'h-16 w-16'
-  }
+  const sizeMap = {
+    sm: { full: 'h-8', monogram: 'h-8 w-8' },
+    md: { full: 'h-12', monogram: 'h-12 w-12' },
+    lg: { full: 'h-16', monogram: 'h-16 w-16' }
+  } as const
 
   const containerClasses = cn(
-    'flex items-center',
-    sizeClasses[size],
+    'flex items-center relative',
+    sizeMap[size][variant],
     className,
   )
 
   if (variant === 'monogram') {
-    return (
-      <div className={containerClasses}>
-        <LogoMonogram isDark={isDark} />
-      </div>
-    )
+    return <LogoMonogram isDark={isDark} className={containerClasses} />
   }
+
+  const logoSrc = isDark 
+    ? '/logos/kleislilabs-logo-dark.svg' 
+    : '/logos/kleislilabs-logo-light.svg'
 
   return (
     <div className={containerClasses}>
-      <LogoFull isDark={isDark} showTagline={showTagline} />
+      <Image 
+        src={logoSrc}
+        alt="KleisliLabs"
+        width={280}
+        height={60}
+        priority
+        className="h-full max-h-full w-auto object-contain"
+        role="img"
+        aria-label="KleisliLabs logo"
+      />
     </div>
   )
 }
