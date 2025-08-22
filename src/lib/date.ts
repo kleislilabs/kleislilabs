@@ -1,8 +1,5 @@
 import { format, parseISO, isValid } from 'date-fns';
 
-/**
- * Format a date string for display
- */
 export function formatDate(dateString: string): string {
   try {
     const date = parseISO(dateString);
@@ -12,13 +9,10 @@ export function formatDate(dateString: string): string {
     return format(date, 'MMMM d, yyyy');
   } catch (_error) {
     console.error('Error formatting date:', dateString, _error);
-    return dateString; // Return original string if formatting fails
+    return dateString;
   }
 }
 
-/**
- * Format a date for SEO/meta tags (ISO format)
- */
 export function formatDateForSEO(dateString: string): string {
   try {
     const date = parseISO(dateString);
@@ -28,13 +22,10 @@ export function formatDateForSEO(dateString: string): string {
     return date.toISOString();
   } catch (_error) {
     console.error('Error formatting date for SEO:', dateString, _error);
-    return new Date().toISOString(); // Return current date if formatting fails
+    return new Date().toISOString();
   }
 }
 
-/**
- * Get relative time (e.g., "2 days ago")
- */
 export function getRelativeTime(dateString: string): string {
   try {
     const date = parseISO(dateString);
@@ -65,9 +56,6 @@ export function getRelativeTime(dateString: string): string {
   }
 }
 
-/**
- * Sort dates (newest first)
- */
 export function sortByDate<T extends { date: string }>(items: T[]): T[] {
   return items.sort((a, b) => {
     try {

@@ -28,11 +28,9 @@ export async function buildCitationPreviewsForPost(slug: string, markdown: strin
     return result;
   }
 
-  // Ensure output dir
   fs.mkdirSync(previewsPath, { recursive: true });
 
-  // Limit concurrency
-  const concurrency = 1; // be gentle; avoid rate limits
+  const concurrency = 1;
   let index = 0;
   let built = 0;
   const run = async () => {
@@ -43,7 +41,6 @@ export async function buildCitationPreviewsForPost(slug: string, markdown: strin
       if (preview) result[id] = preview;
       else console.log(`[Firecrawl] Skipped preview for id ${id} (${url})`);
       if (preview) built++;
-      // Wait 30s between calls to reduce origin/CDN throttling and stay within build budgets
       await new Promise((r) => setTimeout(r, 30000));
     }
   };

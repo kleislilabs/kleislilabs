@@ -1,8 +1,3 @@
-/**
- * Refactored post service using dependency injection and contracts
- * Follows SOLID principles and uses contract-based programming
- */
-
 import path from 'path';
 import { 
   assertValidSlug,
@@ -35,7 +30,6 @@ export class DefaultPostService implements PostService {
     repository?: PostRepository,
     processor?: MarkdownProcessor
   ) {
-    // Use dependency injection with defaults
     const postsDirectory = path.join(process.cwd(), 'posts');
     this.repository = repository || new MarkdownPostRepository(
       new FileSystemStorage(),
@@ -45,13 +39,10 @@ export class DefaultPostService implements PostService {
   }
   
   async getPost(slug: string): Promise<PostData> {
-    // Validate at API boundary
     assertValidSlug(slug);
     
-    // Get post content from repository
     const { frontmatter, content } = this.repository.getPostContent(slug);
     
-    // Process markdown (citations are now handled in the markdown processor)
     const sanitizedContent = ContentValidator.validate(content);
     const html = await this.processor.toHTML(sanitizedContent);
     
@@ -123,5 +114,4 @@ export class DefaultPostService implements PostService {
   }
 }
 
-// Export singleton instance for backward compatibility
 export const postService = new DefaultPostService();

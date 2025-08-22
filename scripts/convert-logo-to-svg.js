@@ -218,11 +218,11 @@ function generateSVGs() {
   svgFiles.forEach(({ name, content }) => {
     const filePath = path.join(outputDir, name);
     fs.writeFileSync(filePath, content);
-    console.log(`✅ Generated: ${name}`);
+    console.log(`Generated: ${name}`);
   });
   
-  console.log('\n🎉 All SVG files generated successfully!');
-  console.log(`📁 Output directory: ${outputDir}`);
+  console.log('\nAll SVG files generated successfully!');
+  console.log(`Output directory: ${outputDir}`);
 }
 
 // Run the generator

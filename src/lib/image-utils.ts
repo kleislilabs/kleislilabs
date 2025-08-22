@@ -1,7 +1,3 @@
-/**
- * Image optimization utilities for the blog system
- */
-
 export interface ImageProps {
   src: string;
   alt?: string;
@@ -11,9 +7,6 @@ export interface ImageProps {
   height?: number;
 }
 
-/**
- * Get optimized image props with default dimensions
- */
 export function getOptimizedImageProps(
   src: string,
   alt?: string,
@@ -30,10 +23,6 @@ export function getOptimizedImageProps(
   };
 }
 
-/**
- * Parse image title and description from markdown title attribute
- * Format: "Title|Description"
- */
 export function parseImageTitle(title?: string): {
   imageTitle?: string;
   description?: string;
@@ -53,9 +42,6 @@ export function parseImageTitle(title?: string): {
   return { imageTitle: title };
 }
 
-/**
- * Generate image container class names based on content
- */
 export function getImageContainerClasses(hasCaption: boolean): string[] {
   const baseClasses = [
     'w-full',

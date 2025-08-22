@@ -10,9 +10,6 @@ const defaultMetadata = {
   image: '/images/og-default.jpg',
 };
 
-/**
- * Generate metadata for the blog index page
- */
 export function generateBlogMetadata(): Metadata {
   return {
     title: defaultMetadata.title,
@@ -53,9 +50,6 @@ export function generateBlogMetadata(): Metadata {
   };
 }
 
-/**
- * Generate metadata for individual blog posts
- */
 export function generatePostMetadata(post: PostData): Metadata {
   const postUrl = `${defaultMetadata.siteUrl}/blog/${post.slug}`;
   const publishedTime = formatDateForSEO(post.frontmatter.date);
@@ -103,9 +97,6 @@ export function generatePostMetadata(post: PostData): Metadata {
   };
 }
 
-/**
- * Generate structured data (JSON-LD) for blog posts
- */
 export function generatePostStructuredData(post: PostData) {
   const postUrl = `${defaultMetadata.siteUrl}/blog/${post.slug}`;
   const publishedTime = formatDateForSEO(post.frontmatter.date);

@@ -1,7 +1,3 @@
-/**
- * Post repository contract using dependency injection and SOLID principles
- */
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -20,7 +16,6 @@ export interface PostRepository {
   listPostSlugs(): ValidatedSlug[];
 }
 
-// Default file system implementation
 export class FileSystemStorage implements FileStorage {
   readFile(path: ValidatedPath): string {
     return fs.readFileSync(path, 'utf8');
@@ -35,7 +30,6 @@ export class FileSystemStorage implements FileStorage {
   }
 }
 
-// Post repository implementation
 export class MarkdownPostRepository implements PostRepository {
   constructor(
     private storage: FileStorage,

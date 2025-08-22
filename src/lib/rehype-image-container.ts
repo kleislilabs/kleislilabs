@@ -9,15 +9,9 @@ interface ElementNode extends Node {
   children?: Node[];
 }
 
-/**
- * Remark plugin that wraps images in a custom ImageContainer component
- * Supports extracting title and description from markdown alt text using pattern:
- * ![alt text](image.jpg "title|description")
- */
 export function rehypeImageContainer() {
   return (tree: Node) => {
     visit(tree, 'element', (node: ElementNode, index: number | null, parent: ElementNode | null) => {
-      // Only process img elements that are direct children of paragraphs
       if (
         node.tagName === 'img' &&
         parent &&
@@ -27,10 +21,8 @@ export function rehypeImageContainer() {
       ) {
         const { src, alt, title } = node.properties;
         
-        // Parse title for potential description using delimiter "|"
         const { imageTitle, description } = parseImageTitle(typeof title === 'string' ? title : undefined);
         
-        // Create the new image container structure
         const imageContainer = {
           type: 'element',
           tagName: 'div',
@@ -85,7 +77,6 @@ export function rehypeImageContainer() {
                     }] : [])
                   ]
                 },
-                // Add caption area when description is provided
                 ...((imageTitle || description) && description ? [{
                   type: 'element',
                   tagName: 'div',
@@ -122,7 +113,6 @@ export function rehypeImageContainer() {
           ]
         };
         
-        // Replace the parent paragraph with our image container
         if (parent && index !== null && typeof index === 'number' && parent.children) {
           parent.children[index] = imageContainer;
         }
