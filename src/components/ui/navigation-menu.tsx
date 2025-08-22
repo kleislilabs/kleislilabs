@@ -49,10 +49,13 @@ export function NavigationMenu({ items, className }: NavigationMenuProps) {
 export function NavigationMenuItem({ item }: { item: NavigationItem }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const hasDropdown = item.items && item.items.length > 0;
-  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (timeoutRef.current !== null) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
     setIsOpen(true);
   };
 
@@ -62,7 +65,10 @@ export function NavigationMenuItem({ item }: { item: NavigationItem }) {
 
   React.useEffect(() => {
     return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
     };
   }, []);
 
@@ -116,7 +122,7 @@ export function NavigationMenuItem({ item }: { item: NavigationItem }) {
         />
       </button>
       
-      {isOpen && item.items && (
+      {isOpen && hasDropdown && item.items && (
         <NavigationMenuContent items={item.items} />
       )}
     </li>

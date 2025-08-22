@@ -3,7 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -76,6 +76,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* Logo colors */
+  --logo-primary: #1e3a8a;
+  --logo-secondary: #0f766e;
+  --logo-primary-dark: #60a5fa;
+  --logo-secondary-dark: #2dd4bf;
+  --logo-bg-dark: #1e3a8a;
+  --logo-bg-light: #f8fafc;
+  --logo-border-light: #e2e8f0;
 }
 
 .dark {
@@ -110,15 +118,19 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  /* Logo colors dark mode */
+  --logo-primary: #60a5fa;
+  --logo-secondary: #2dd4bf;
+  --logo-primary-dark: #60a5fa;
+  --logo-secondary-dark: #2dd4bf;
+  --logo-bg-dark: #1e3a8a;
+  --logo-bg-light: #f8fafc;
+  --logo-border-light: #e2e8f0;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-  }
-  
-  html {
-    scroll-behavior: smooth;
   }
   
   body {
@@ -129,6 +141,12 @@
     text-rendering: optimizeLegibility;
   }
   
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   /* Focus styles for better accessibility */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;

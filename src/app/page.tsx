@@ -1,14 +1,24 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { getAllPostsMetadata } from "@/lib/posts";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { PostCard } from "@/components/blog/PostCard";
 import { Logo } from "@/components/ui/logo";
-import { Features } from "@/components/home/Features";
-import { CtaSection } from "@/components/ui/CtaSection";
 import { Section } from "@/components/ui/Section";
 import { blogConfig } from "@/lib/config";
 import { ArrowRight, BookOpen, Target } from "lucide-react";
+
+// Lazy load below-fold components
+const Features = dynamic(() => import("@/components/home/Features").then(mod => ({ default: mod.Features })), {
+  loading: () => <div className="h-96 animate-pulse bg-muted rounded-lg" />,
+  ssr: true
+});
+
+const CtaSection = dynamic(() => import("@/components/ui/CtaSection").then(mod => ({ default: mod.CtaSection })), {
+  loading: () => <div className="h-64 animate-pulse bg-muted rounded-lg" />,
+  ssr: true
+});
 
 export default function Home() {
   const posts = getAllPostsMetadata();
@@ -21,7 +31,7 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto space-y-8">
             <div className="flex justify-center mb-6">
-              <Logo variant="full" size="lg" showTagline={false} />
+              <Logo variant="full" size="lg" />
             </div>
             
             <div className="space-y-6">
@@ -52,7 +62,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Featured Posts Section */}
+      {/* Featured Posts Section - Consider lazy loading if below fold */}
       {featuredPosts.length > 0 && (
         <Section spacing="lg" background="muted" container={false}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
