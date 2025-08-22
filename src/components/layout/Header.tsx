@@ -6,12 +6,7 @@ import { blogConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Logo } from "@/components/ui/logo";
-import { 
-  NavigationMenu, 
-  NavigationMenuItem, 
-  NavigationMenuLink, 
-  NavigationMenuList
-} from "@/components/ui/navigation-menu";
+import { NavigationMenu } from "@/components/ui/navigation-menu";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
@@ -39,22 +34,13 @@ export function Header() {
         </div>
 
         {/* Desktop Navigation - Hidden on small screens */}
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList className="flex items-center space-x-6">
-            {blogConfig.navigation.map((item) => (
-              <NavigationMenuItem key={item.href}>
-                <NavigationMenuLink asChild>
-                  <Link 
-                    href={item.href} 
-                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-                  >
-                    {item.label}
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <NavigationMenu 
+          className="hidden md:flex"
+          items={blogConfig.navigation.map(item => ({
+            title: item.label,
+            href: item.href
+          }))}
+        />
 
         {/* Right side actions */}
         <div className="flex items-center space-x-2">

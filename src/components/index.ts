@@ -32,6 +32,5 @@ export { Input } from "./ui/input";
 export { 
   NavigationMenu, 
   NavigationMenuItem, 
-  NavigationMenuLink, 
-  NavigationMenuList 
+  NavigationMenuContent 
 } from "./ui/navigation-menu";

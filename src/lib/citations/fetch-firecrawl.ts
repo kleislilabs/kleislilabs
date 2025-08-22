@@ -11,8 +11,7 @@ function truncateAtWord(input: string, max = 200): string {
   return (lastSpace > 120 ? cut.slice(0, lastSpace) : cut) + '…';
 }
 
-function sanitize(text: string | undefined | null): string {
-  if (!text) return '';
+function sanitize(text: string): string {
   return decode(text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim());
 }
 
@@ -47,9 +46,12 @@ async function httpGet(url: string, timeoutMs: number): Promise<{ url: string; h
   }
 }
 
-function absolutize(base: string, href: string | undefined): string | undefined {
-  if (!href) return undefined;
-  try { return new URL(href, base).toString(); } catch { return undefined; }
+function absolutize(base: string, href: string): string | undefined {
+  try { 
+    return new URL(href, base).toString(); 
+  } catch { 
+    return undefined; 
+  }
 }
 
 export async function fetchCitationPreview(id: string, url: string): Promise<CitationPreview | null> {
@@ -70,12 +72,15 @@ export async function fetchCitationPreview(id: string, url: string): Promise<Cit
   const iconHref = root.querySelector('link[rel~="icon" i], link[rel~="shortcut" i][rel~="icon" i]')?.getAttribute('href') || '';
 
   const domain = getDomain(finalUrl) || new URL(finalUrl).hostname;
-  const title = sanitize(titleTag) || domain;
-  const descriptionRaw = sanitize(descTag);
+  const title = titleTag ? sanitize(titleTag) : domain;
+  const descriptionRaw = descTag ? sanitize(descTag) : '';
   const description = truncateAtWord(descriptionRaw, 220);
 
-  const siteLogoUrl = absolutize(finalUrl, iconHref) || absolutize(finalUrl, twImg) || absolutize(finalUrl, ogImg);
-  const image = absolutize(finalUrl, ogImg) || absolutize(finalUrl, twImg);
+  const siteLogoUrl = (iconHref && absolutize(finalUrl, iconHref)) || 
+                      (twImg && absolutize(finalUrl, twImg)) || 
+                      (ogImg && absolutize(finalUrl, ogImg));
+  const image = (ogImg && absolutize(finalUrl, ogImg)) || 
+                (twImg && absolutize(finalUrl, twImg));
 
   if (!siteLogoUrl) console.log(`[Firecrawl] Missing siteLogoUrl for ${finalUrl}`);
   if (!titleTag) console.log(`[Firecrawl] Missing og:title/title for ${finalUrl}`);

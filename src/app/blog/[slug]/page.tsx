@@ -9,6 +9,7 @@ import fs from "fs";
 import path from "path";
 import { PostNavigation } from "@/components/blog/PostNavigation";
 import { Metadata } from "next";
+import { assertValidSlug } from "@/types/contracts";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -26,7 +27,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
+  
+  // Validate slug at API boundary
   try {
+    assertValidSlug(slug);
     const post = await getPostData(slug);
     return generatePostMetadata(post);
   } catch {
@@ -39,8 +43,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  let post;
   
+  // Validate slug at API boundary
+  try {
+    assertValidSlug(slug);
+  } catch {
+    notFound();
+  }
+  
+  let post;
   try {
     post = await getPostData(slug);
   } catch {
@@ -49,12 +60,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const { previousPost, nextPost } = getAdjacentPosts(slug);
   const structuredData = generatePostStructuredData(post);
+  
+  // Safe preview loading with schema validation
   const previewsPath = path.join(process.cwd(), "public", "previews", `${slug}.json`);
   let previews: Record<string, unknown> = {};
+  
   if (fs.existsSync(previewsPath)) {
     try {
-      previews = JSON.parse(fs.readFileSync(previewsPath, "utf8"));
-    } catch {}
+      const rawData = fs.readFileSync(previewsPath, "utf8");
+      const parsed = JSON.parse(rawData);
+      
+      // Validate that parsed data is an object
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        previews = parsed;
+      }
+    } catch {
+      // Silent fail for invalid JSON - use empty previews
+    }
   }
 
   return (
