@@ -3,7 +3,7 @@ import { blogConfig } from "@/lib/config";
 import { Separator } from "@/components/ui/separator";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
-import { Github, Twitter, Mail, Heart } from "lucide-react";
+import { Github, Twitter, Mail } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -114,16 +114,6 @@ export function Footer() {
                   </a>
                 </li>
               )}
-              <li>
-                <a 
-                  href="https://nextjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors hover:underline"
-                >
-                  Built with Next.js
-                </a>
-              </li>
             </ul>
           </div>
         </div>
@@ -134,11 +124,6 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {currentYear} {blogConfig.title}. All rights reserved.
           </p>
-          <div className="flex items-center justify-center space-x-1 text-sm text-muted-foreground">
-            <span>Made with</span>
-            <Heart className="h-3 w-3 text-red-500 fill-current" />
-            <span>using Next.js and shadcn/ui</span>
-          </div>
         </div>
       </div>
     </footer>
