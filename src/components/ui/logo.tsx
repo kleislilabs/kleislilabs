@@ -2,124 +2,77 @@
 
 import React, { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
   variant?: 'full' | 'monogram'
   size?: 'sm' | 'md' | 'lg'
   className?: string
-  showTagline?: boolean
 }
 
-const LogoFull = ({ isDark, showTagline = false }: { isDark: boolean; showTagline?: boolean }) => (
-  <svg width="280" height="60" viewBox="0 0 280 60" className="h-full w-auto">
-    <defs>
-      <style>
-        {`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');`}
-      </style>
-    </defs>
+const LogoMark = ({ className }: { className?: string }) => (
+  <>
+    <path d="M -1.2246467991473532e-16 22 
+             L 1.2246467991473532e-16 26 
+             L 32 26 
+             L 32 22 Z" 
+          fill="var(--logo-primary)" className={className} />
+    <path d="M 32 30 
+             L 44 24 
+             L 32 18 Z" 
+          fill="var(--logo-primary)" className={className} />
     
-    {/* Logo Mark */}
-    <g transform="translate(6, 6)">
-      <g id="logo-mark">
-        <path d="M -1.2246467991473532e-16 22 
-                 L 1.2246467991473532e-16 26 
-                 L 32 26 
-                 L 32 22 Z" 
-              fill={isDark ? "#60a5fa" : "#1e3a8a"} />
-        <path d="M 32 30 
-                 L 44 24 
-                 L 32 18 Z" 
-              fill={isDark ? "#60a5fa" : "#1e3a8a"} />
-        
-        <path d="M 17 10.267949192431123 
-                 L 15 13.732050807568877 
-                 L 39.248711305964285 27.73205080756888 
-                 L 41.248711305964285 24.26794919243112 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
-        <path d="M 37.248711305964285 31.196152422706632 
-                 L 50.64101615137755 32 
-                 L 43.248711305964285 20.803847577293368 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
-        
-        <path d="M 15 34.267949192431125 
-                 L 17 37.732050807568875 
-                 L 41.248711305964285 23.73205080756888 
-                 L 39.248711305964285 20.26794919243112 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
-        <path d="M 43.248711305964285 27.196152422706632 
-                 L 50.64101615137755 16 
-                 L 37.248711305964285 16.803847577293368 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
-      </g>
-    </g>
+    <path d="M 17 10.267949192431123 
+             L 15 13.732050807568877 
+             L 39.248711305964285 27.73205080756888 
+             L 41.248711305964285 24.26794919243112 Z" 
+          fill="var(--logo-secondary)" className={className} />
+    <path d="M 37.248711305964285 31.196152422706632 
+             L 50.64101615137755 32 
+             L 43.248711305964285 20.803847577293368 Z" 
+          fill="var(--logo-secondary)" className={className} />
     
-    {/* Company Name */}
-    <text x="70" y="32" 
-          fontFamily="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-          fontSize="28" 
-          fontWeight="300" 
-          fill={isDark ? "#f8fafc" : "#1e3a8a"}
-          letterSpacing="-0.5">KleisliLabs</text>
-    
-    {/* Tagline */}
-    {showTagline && (
-      <text x="70" y="48" 
-            fontFamily="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
-            fontSize="12" 
-            fontWeight="400" 
-            fill={isDark ? "#cbd5e1" : "#64748b"}
-            opacity={isDark ? "0.9" : "1"}>From Vision to AI Reality</text>
-    )}
-  </svg>
+    <path d="M 15 34.267949192431125 
+             L 17 37.732050807568875 
+             L 41.248711305964285 23.73205080756888 
+             L 39.248711305964285 20.26794919243112 Z" 
+          fill="var(--logo-secondary)" className={className} />
+    <path d="M 43.248711305964285 27.196152422706632 
+             L 50.64101615137755 16 
+             L 37.248711305964285 16.803847577293368 Z" 
+          fill="var(--logo-secondary)" className={className} />
+  </>
 )
 
-const LogoMonogram = ({ isDark }: { isDark: boolean }) => (
-  <svg width="64" height="64" viewBox="0 0 64 64" className="h-full w-auto">
-    <rect width="64" height="64" rx="12" fill={isDark ? "#1e3a8a" : "#f8fafc"} 
-          stroke={isDark ? "none" : "#e2e8f0"} strokeWidth={isDark ? "0" : "1"} />
-    
-    <g transform="translate(8, 8)" opacity="0.95">
-      <g id="logo-mark">
-        <path d="M -1.2246467991473532e-16 22 
-                 L 1.2246467991473532e-16 26 
-                 L 32 26 
-                 L 32 22 Z" 
-              fill={isDark ? "#f8fafc" : "#1e3a8a"} />
-        <path d="M 32 30 
-                 L 44 24 
-                 L 32 18 Z" 
-              fill={isDark ? "#f8fafc" : "#1e3a8a"} />
-        
-        <path d="M 17 10.267949192431123 
-                 L 15 13.732050807568877 
-                 L 39.248711305964285 27.73205080756888 
-                 L 41.248711305964285 24.26794919243112 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
-        <path d="M 37.248711305964285 31.196152422706632 
-                 L 50.64101615137755 32 
-                 L 43.248711305964285 20.803847577293368 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
-        
-        <path d="M 15 34.267949192431125 
-                 L 17 37.732050807568875 
-                 L 41.248711305964285 23.73205080756888 
-                 L 39.248711305964285 20.26794919243112 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
-        <path d="M 43.248711305964285 27.196152422706632 
-                 L 50.64101615137755 16 
-                 L 37.248711305964285 16.803847577293368 Z" 
-              fill={isDark ? "#2dd4bf" : "#0f766e"} />
+const LogoMonogram = ({ className }: { className?: string }) => {
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = mounted ? resolvedTheme === 'dark' : false
+
+  return (
+    <svg viewBox="0 0 64 64" className={cn("h-full w-auto", className)} role="img" aria-label="KleisliLabs logo">
+      <rect width="64" height="64" rx="12" 
+            fill={isDark ? "var(--logo-bg-dark)" : "var(--logo-bg-light)"} 
+            stroke={isDark ? "none" : "var(--logo-border-light)"} 
+            strokeWidth={isDark ? "0" : "1"} />
+      
+      <g transform="translate(8, 8)" opacity="0.95">
+        <LogoMark />
       </g>
-    </g>
-  </svg>
-)
+    </svg>
+  )
+}
 
 export function Logo({
   variant = 'full',
   size = 'md',
   className,
-  showTagline = false,
 }: LogoProps) {
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
@@ -129,34 +82,49 @@ export function Logo({
   }, [])
 
   if (!mounted) {
-    return null
+    return (
+      <div className={cn(
+        'flex items-center',
+        size === 'sm' ? 'h-8' : size === 'md' ? 'h-12' : 'h-16',
+        className
+      )} />
+    )
   }
 
   const isDark = resolvedTheme === 'dark'
 
-  const sizeClasses = {
-    sm: variant === 'full' ? 'h-8' : 'h-8 w-8',
-    md: variant === 'full' ? 'h-12' : 'h-12 w-12',
-    lg: variant === 'full' ? 'h-16' : 'h-16 w-16'
-  }
+  const sizeMap = {
+    sm: { full: 'h-8', monogram: 'h-8 w-8' },
+    md: { full: 'h-12', monogram: 'h-12 w-12' },
+    lg: { full: 'h-16', monogram: 'h-16 w-16' }
+  } as const
 
   const containerClasses = cn(
-    'flex items-center',
-    sizeClasses[size],
+    'flex items-center relative',
+    sizeMap[size][variant],
     className,
   )
 
   if (variant === 'monogram') {
-    return (
-      <div className={containerClasses}>
-        <LogoMonogram isDark={isDark} />
-      </div>
-    )
+    return <LogoMonogram className={containerClasses} />
   }
+
+  const logoSrc = isDark 
+    ? '/logos/kleislilabs-logo-dark.svg' 
+    : '/logos/kleislilabs-logo-light.svg'
 
   return (
     <div className={containerClasses}>
-      <LogoFull isDark={isDark} showTagline={showTagline} />
+      <Image 
+        src={logoSrc}
+        alt="KleisliLabs"
+        width={280}
+        height={60}
+        priority
+        className="h-full max-h-full w-auto object-contain"
+        role="img"
+        aria-label="KleisliLabs logo"
+      />
     </div>
   )
 }
