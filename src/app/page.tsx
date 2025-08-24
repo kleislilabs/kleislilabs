@@ -20,17 +20,6 @@ const CtaSection = dynamic(() => import("@/components/ui/CtaSection").then(mod =
   ssr: true
 });
 
-// Lazy load below-fold components
-const Features = dynamic(() => import("@/components/home/Features").then(mod => ({ default: mod.Features })), {
-  loading: () => <div className="h-96 animate-pulse bg-muted rounded-lg" />,
-  ssr: true
-});
-
-const CtaSection = dynamic(() => import("@/components/ui/CtaSection").then(mod => ({ default: mod.CtaSection })), {
-  loading: () => <div className="h-64 animate-pulse bg-muted rounded-lg" />,
-  ssr: true
-});
-
 export default function Home() {
   const posts = getAllPostsMetadata();
   const featuredPosts = posts.slice(0, 3); // Show latest 3 posts
