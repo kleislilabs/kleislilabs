@@ -10,6 +10,8 @@ export interface PostFrontmatter {
   author?: string;
   image?: string;
   published?: boolean;
+  draft?: boolean;
+  updated?: string;
 }
 
 export interface PostData {

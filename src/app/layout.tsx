@@ -37,19 +37,42 @@ export const metadata: Metadata = {
     siteName: blogConfig.title,
     images: [
       {
+        url: "/og-image.png",
+        width: 1024,
+        height: 1024,
+        alt: `${blogConfig.title} - ${blogConfig.tagline}`,
+        type: "image/png",
+      },
+      {
+        url: "/twitter-image.png",
+        width: 512,
+        height: 512,
+        alt: `${blogConfig.title} - ${blogConfig.tagline}`,
+        type: "image/png",
+      },
+      {
         url: blogConfig.defaultImage,
         width: 512,
-        height: 110,
+        height: 512,
         alt: `${blogConfig.title} - ${blogConfig.tagline}`,
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: blogConfig.social.twitter,
+    creator: blogConfig.social.twitter,
     title: blogConfig.title,
     description: blogConfig.description,
-    images: [blogConfig.defaultImage],
-    creator: blogConfig.social.twitter,
+    images: [
+      {
+        url: "/twitter-image.png",
+        width: 512,
+        height: 512,
+        alt: `${blogConfig.title} - ${blogConfig.tagline}`,
+      },
+    ],
   },
   robots: {
     index: true,
@@ -62,6 +85,21 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION,
+  },
+  appleWebApp: {
+    capable: true,
+    title: blogConfig.title,
+    statusBarStyle: "default",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  category: "technology",
+  classification: "Business",
 };
 
 export default function RootLayout({
@@ -71,6 +109,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Additional Meta Tags for Enhanced Platform Support */}
+        
+        {/* LinkedIn specific */}
+        <meta property="og:image:secure_url" content={`${blogConfig.siteUrl}/og-image.png`} />
+        
+        {/* WhatsApp & Telegram Enhancement */}
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1024" />
+        
+        {/* Pinterest Rich Pins */}
+        <meta property="article:author" content={blogConfig.author} />
+        
+        {/* Discord & Slack Color Theme */}
+        <meta name="theme-color" content="#0070F3" />
+        
+        {/* Additional Twitter/X Tags */}
+        <meta name="twitter:site" content={blogConfig.social.twitter} />
+        <meta name="twitter:creator" content={blogConfig.social.twitter} />
+        <meta name="twitter:domain" content="kleislilabs.com" />
+        
+        {/* Fallback for messaging apps */}
+        <link rel="image_src" href={`${blogConfig.siteUrl}/og-image.png`} />
+        
+        {/* Apple Touch Icons for iMessage */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        
+        {/* Favicon variations */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
