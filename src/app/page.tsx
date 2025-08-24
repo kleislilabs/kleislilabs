@@ -7,7 +7,18 @@ import { PostCard } from "@/components/blog/PostCard";
 import { Logo } from "@/components/ui/logo";
 import { Section } from "@/components/ui/Section";
 import { blogConfig } from "@/lib/config";
-import { ArrowRight, BookOpen, Target } from "lucide-react";
+import { ArrowRight, Target, Brain } from "lucide-react";
+
+// Lazy load below-fold components
+const Features = dynamic(() => import("@/components/home/Features").then(mod => ({ default: mod.Features })), {
+  loading: () => <div className="h-96 animate-pulse bg-muted rounded-lg" />,
+  ssr: true
+});
+
+const CtaSection = dynamic(() => import("@/components/ui/CtaSection").then(mod => ({ default: mod.CtaSection })), {
+  loading: () => <div className="h-64 animate-pulse bg-muted rounded-lg" />,
+  ssr: true
+});
 
 // Lazy load below-fold components
 const Features = dynamic(() => import("@/components/home/Features").then(mod => ({ default: mod.Features })), {
@@ -46,15 +57,15 @@ export default function Home() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <Button size="lg" className="text-lg px-8 py-3 w-full sm:w-auto" asChild>
-                <Link href="/about">
-                  <Target className="mr-2 h-5 w-5" />
-                  Learn About Us
+                <Link href="/ai-readiness">
+                  <Brain className="mr-2 h-5 w-5" />
+                  Check AI Readiness
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="text-lg px-8 py-3 w-full sm:w-auto" asChild>
-                <Link href="/blog">
-                  <BookOpen className="mr-2 h-5 w-5" />
-                  Read Our Blog
+                <Link href="/about">
+                  <Target className="mr-2 h-5 w-5" />
+                  Learn About Us
                 </Link>
               </Button>
             </div>
