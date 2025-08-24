@@ -25,6 +25,7 @@ export const blogConfig = {
   // Navigation
   navigation: [
     { href: '/', label: 'Home' },
+    { href: '/ai-readiness', label: 'AI Readiness' },
     { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
