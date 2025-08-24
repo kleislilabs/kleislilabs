@@ -52,36 +52,35 @@ export function AssessmentIntro({ onStart }: AssessmentIntroProps) {
           <Tooltip key={index}>
             <TooltipTrigger asChild>
               <Card 
-            key={index} 
-            className={cn(
-              "text-center transition-all duration-300 cursor-pointer",
-              "hover:shadow-xl hover:scale-105 hover:border-primary/50",
-              "animate-in fade-in slide-in-from-bottom",
-              hoveredBenefitIndex === index && "ring-2 ring-primary/20 ring-offset-2"
-            )}
-            style={{ animationDelay: `${index * 100}ms` }}
-            onMouseEnter={() => setHoveredBenefitIndex(index)}
-            onMouseLeave={() => setHoveredBenefitIndex(null)}
-          >
-            <CardHeader className="pb-3">
-              <div className={cn(
-                "mx-auto mb-3 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300",
-                hoveredBenefitIndex === index 
-                  ? "bg-primary/20 scale-110 rotate-3" 
-                  : "bg-primary/10"
-              )}>
-                <benefit.icon className={cn(
-                  "h-6 w-6 text-primary transition-transform",
-                  hoveredBenefitIndex === index && "scale-110"
-                )} />
-              </div>
-              <CardTitle className="text-lg">{benefit.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-sm">
-                {benefit.description}
-              </CardDescription>
-            </CardContent>
+                className={cn(
+                  "text-center transition-all duration-300 cursor-pointer",
+                  "hover:shadow-xl hover:scale-105 hover:border-primary/50",
+                  "animate-in fade-in slide-in-from-bottom",
+                  hoveredBenefitIndex === index && "ring-2 ring-primary/20 ring-offset-2"
+                )}
+                style={{ animationDelay: `${index * 100}ms` }}
+                onMouseEnter={() => setHoveredBenefitIndex(index)}
+                onMouseLeave={() => setHoveredBenefitIndex(null)}
+              >
+                <CardHeader className="pb-3">
+                  <div className={cn(
+                    "mx-auto mb-3 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300",
+                    hoveredBenefitIndex === index 
+                      ? "bg-primary/20 scale-110 rotate-3" 
+                      : "bg-primary/10"
+                  )}>
+                    <benefit.icon className={cn(
+                      "h-6 w-6 text-primary transition-transform",
+                      hoveredBenefitIndex === index && "scale-110"
+                    )} />
+                  </div>
+                  <CardTitle className="text-lg">{benefit.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-sm">
+                    {benefit.description}
+                  </CardDescription>
+                </CardContent>
               </Card>
             </TooltipTrigger>
             <TooltipContent>
@@ -110,7 +109,7 @@ export function AssessmentIntro({ onStart }: AssessmentIntroProps) {
               </div>
             </div>
             <Button 
-              onClick={onStart} 
+              onClick={() => onStart()} 
               size="lg"
               className="group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary transition-all hover:shadow-xl hover:scale-105"
             >

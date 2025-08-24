@@ -38,7 +38,8 @@ export default function AIReadinessPage() {
 
   const handleStartAssessment = (category?: string) => {
     setIsAnimatingTransition(true);
-    if (category) {
+    // Ensure category is a string or null, not an event object
+    if (category && typeof category === 'string') {
       setSelectedCategory(category);
     } else {
       setSelectedCategory(null);
@@ -209,19 +210,18 @@ export default function AIReadinessPage() {
                           if (e.key === 'Enter' || e.key === ' ') {
                             handleStartAssessment(category.title);
                           }
-                        }} 
-                    key={index} 
-                    className={cn(
-                      "border-2 transition-all duration-300 cursor-pointer",
-                      "hover:shadow-xl hover:scale-105 hover:border-primary/50",
-                      "animate-in fade-in slide-in-from-bottom",
-                      hoveredCardIndex === index && "ring-2 ring-primary/20 ring-offset-2",
-                      selectedCategory === category.title && "border-primary bg-primary/5"
-                    )}
-                    style={{ animationDelay: `${index * 100}ms` }}
-                    onMouseEnter={() => setHoveredCardIndex(index)}
-                    onMouseLeave={() => setHoveredCardIndex(null)}
-                  >
+                        }}
+                        className={cn(
+                          "border-2 transition-all duration-300 cursor-pointer",
+                          "hover:shadow-xl hover:scale-105 hover:border-primary/50",
+                          "animate-in fade-in slide-in-from-bottom",
+                          hoveredCardIndex === index && "ring-2 ring-primary/20 ring-offset-2",
+                          selectedCategory === category.title && "border-primary bg-primary/5"
+                        )}
+                        style={{ animationDelay: `${index * 100}ms` }}
+                        onMouseEnter={() => setHoveredCardIndex(index)}
+                        onMouseLeave={() => setHoveredCardIndex(null)}
+                      >
                     <CardHeader className="pb-3">
                       <div className="flex items-start gap-3">
                         <div className={cn(
@@ -284,7 +284,7 @@ export default function AIReadinessPage() {
                   {selectedCategory} Assessment
                 </h2>
                 <p className="text-muted-foreground mt-2">
-                  Starting with questions focused on {typeof selectedCategory === 'string' ? selectedCategory.toLowerCase() : selectedCategory}
+                  Starting with questions focused on {selectedCategory?.toLowerCase() ?? 'this area'}
                 </p>
               </div>
             )}

@@ -101,6 +101,10 @@ function Badge({
 
   // When using asChild, pass through children directly
   if (asChild && !icon && !closable) {
+    // Filter out any onClick props that might be event objects
+    const { onClick, ...restProps } = props as React.HTMLAttributes<HTMLElement>;
+    const safeProps = typeof onClick === 'function' ? { ...restProps, onClick } : restProps;
+    
     return (
       <Comp
         data-slot="badge"
@@ -111,7 +115,7 @@ function Badge({
           "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
           className
         )}
-        {...props}
+        {...safeProps}
       >
         {children}
       </Comp>
@@ -119,6 +123,10 @@ function Badge({
   }
 
   // For regular badges, we can add icons and close button
+  // Filter out any onClick props that might be event objects
+  const { onClick, ...restProps } = props as React.HTMLAttributes<HTMLElement>;
+  const safeProps = typeof onClick === 'function' ? { ...restProps, onClick } : restProps;
+  
   return (
     <Comp
       data-slot="badge"
@@ -129,7 +137,7 @@ function Badge({
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         className
       )}
-      {...props}
+      {...safeProps}
     >
       {icon && <span className="shrink-0">{icon}</span>}
       {children}

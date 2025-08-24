@@ -288,7 +288,7 @@ export function AssessmentForm({ onComplete }: AssessmentFormProps) {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [currentQuestionIndex, canProceed]);
+  }, [currentQuestionIndex, canProceed, handleNext, handlePrevious]);
 
   // Cleanup timer on unmount
   useEffect(() => {
