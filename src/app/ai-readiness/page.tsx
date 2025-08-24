@@ -40,6 +40,8 @@ export default function AIReadinessPage() {
     setIsAnimatingTransition(true);
     if (category) {
       setSelectedCategory(category);
+    } else {
+      setSelectedCategory(null);
     }
     setTimeout(() => {
       setAssessmentState("assessment");
@@ -282,7 +284,7 @@ export default function AIReadinessPage() {
                   {selectedCategory} Assessment
                 </h2>
                 <p className="text-muted-foreground mt-2">
-                  Starting with questions focused on {selectedCategory.toLowerCase()}
+                  Starting with questions focused on {typeof selectedCategory === 'string' ? selectedCategory.toLowerCase() : selectedCategory}
                 </p>
               </div>
             )}
