@@ -84,7 +84,7 @@ const teamMembers = [
     expertise: ["System Architecture", "Generative AI", "Cloud Infrastructure"],
     social: {
       linkedin: "https://www.linkedin.com/in/sumukhupadhya/",
-      github: "#"
+      twitter: "https://x.com/bufferingMC"
     }
   },
   {
