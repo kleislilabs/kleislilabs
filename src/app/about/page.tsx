@@ -74,7 +74,7 @@ const teamMembers = [
     expertise: ["Strategic Planning", "AI Ethics", "Business Development"],
     social: {
       linkedin: "https://www.linkedin.com/in/parvezakhtar/",
-      twitter: "https://x.com/ipmOb"
+      twitter: "#"
     }
   },
   {
