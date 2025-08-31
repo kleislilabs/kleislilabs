@@ -8,7 +8,7 @@ import Link from "next/link";
 
 interface TeamMemberProps {
   name: string;
-  role: string;
+  role?: string;
   bio: string;
   image?: string;
   expertise: string[];
@@ -64,7 +64,7 @@ export function TeamMember({
             
             <div>
               <h3 className="text-xl font-semibold">{name}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{role}</p>
+              {role && <p className="text-sm text-muted-foreground mt-1">{role}</p>}
             </div>
             
             <p className="text-sm text-muted-foreground leading-relaxed">

@@ -48,71 +48,63 @@ const stats = [
 
 const timelineItems = [
   {
-    year: "2020",
-    title: "Foundation",
-    description: "KleisliLabs was founded with a vision to democratize AI for businesses of all sizes.",
-    highlight: false
-  },
-  {
-    year: "2021",
-    title: "First Major Breakthrough",
-    description: "Developed our proprietary AI framework that reduced implementation time by 60%.",
-    highlight: false
-  },
-  {
     year: "2023",
-    title: "Global Expansion",
-    description: "Expanded operations to serve clients across North America, Europe, Australia, and the Middle East.",
+    title: "Spark",
+    description: "Founded amid the AI revolution to empower startups. Igniting rapid prototyping with open-source models.",
     highlight: false
   },
   {
     year: "2024",
-    title: "Innovation Leader",
-    description: "Recognized as a leader in practical AI implementation with over 50 successful deployments.",
+    title: "Breakthrough",
+    description: "Pioneered AI-in-4-Week complete solutions. Full-stack MVP: UI + Backend + AI + Production-ready codebase.",
+    highlight: false
+  },
+  {
+    year: "2025",
+    title: "Dominance",
+    description: "Partnered with 5+ elite VCs as their technical accelerator. 15+ startups launched from zero to funding in record time.",
     highlight: true
   }
 ];
 
 const teamMembers = [
   {
-    name: "Sarah Chen",
-    role: "CEO & Co-Founder",
-    bio: "Visionary leader with 15+ years in AI and machine learning, passionate about making AI accessible to all businesses.",
+    name: "Parvez Akhtar",
+    bio: "Visionary leader with 6+ years in AI and machine learning, passionate about making AI accessible to all businesses.",
     expertise: ["Strategic Planning", "AI Ethics", "Business Development"],
     social: {
-      linkedin: "#",
-      twitter: "#"
+      linkedin: "https://www.linkedin.com/in/parvezakhtar/",
+      twitter: "https://x.com/ipmOb"
     }
   },
   {
-    name: "Marcus Rodriguez",
-    role: "CTO & Co-Founder",
+    name: "Sumukh Upadhya",
+    role: "Co-Founder",
     bio: "Technical architect with deep expertise in building scalable AI systems and leading engineering teams.",
-    expertise: ["System Architecture", "Machine Learning", "Cloud Infrastructure"],
+    expertise: ["System Architecture", "Generative AI", "Cloud Infrastructure"],
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/sumukhupadhya/",
       github: "#"
     }
   },
   {
-    name: "Emily Watson",
-    role: "Head of AI Research",
-    bio: "PhD in Computer Science, specializing in neural networks and natural language processing.",
-    expertise: ["Deep Learning", "NLP", "Computer Vision"],
+    name: "Saurabh Sharma",
+    bio: "AI consultant innovating in e-commerce, healthcare, fintech using deep learning and NLP. Expertise: Deep Learning, NLP, Computer Vision, AI Product Strategy, User Experience Design.",
+    expertise: ["UI/UX Research", "Development", "Generative AI", "Data Warehousing"],
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/saurshaz/",
       twitter: "#"
     }
   },
   {
-    name: "David Park",
-    role: "Head of Client Success",
-    bio: "Dedicated to ensuring every client achieves their AI transformation goals with measurable results.",
-    expertise: ["Project Management", "Client Relations", "Solution Design"],
+    name: "Kumar Roshan ",
+    bio: "Senior Software Architect | Retail , E-commerce, Gig Economy, Logistics",
+    expertise: ["System Architecture", "Distributed Systems", "Data Engineering"],
     social: {
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/kumarroshan2006",
+      twitter: "#"
     }
-  }
+  },
 ];
 
 const values = [
