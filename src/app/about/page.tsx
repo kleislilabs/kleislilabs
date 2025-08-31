@@ -70,8 +70,7 @@ const timelineItems = [
 const teamMembers = [
   {
     name: "Parvez Akhtar",
-    role: "CEO & Co-Founder",
-    bio: "Visionary leader with 15+ years in AI and machine learning, passionate about making AI accessible to all businesses.",
+    bio: "Visionary leader with 6+ years in AI and machine learning, passionate about making AI accessible to all businesses.",
     expertise: ["Strategic Planning", "AI Ethics", "Business Development"],
     social: {
       linkedin: "https://www.linkedin.com/in/parvezakhtar/",
@@ -80,33 +79,32 @@ const teamMembers = [
   },
   {
     name: "Sumukh Upadhya",
-    role: "CTO & Co-Founder",
+    role: "Co-Founder",
     bio: "Technical architect with deep expertise in building scalable AI systems and leading engineering teams.",
-    expertise: ["System Architecture", "Machine Learning", "Cloud Infrastructure"],
+    expertise: ["System Architecture", "Generative AI", "Cloud Infrastructure"],
     social: {
       linkedin: "https://www.linkedin.com/in/sumukhupadhya/",
       github: "#"
     }
   },
   {
-    name: "Emily Watson",
-    role: "Head of AI Research",
-    bio: "PhD in Computer Science, specializing in neural networks and natural language processing.",
-    expertise: ["Deep Learning", "NLP", "Computer Vision"],
+    name: "Saurabh Sharma",
+    bio: "AI consultant innovating in e-commerce, healthcare, fintech using deep learning and NLP. Expertise: Deep Learning, NLP, Computer Vision, AI Product Strategy, User Experience Design.",
+    expertise: ["UI/UX Research", "Development", "Generative AI", "Data Warehousing"],
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/saurshaz/",
       twitter: "#"
     }
   },
   {
-    name: "David Park",
-    role: "Head of Client Success",
-    bio: "Dedicated to ensuring every client achieves their AI transformation goals with measurable results.",
-    expertise: ["Project Management", "Client Relations", "Solution Design"],
+    name: "Kumar Roshan ",
+    bio: "Senior Software Architect | Retail , E-commerce, Gig Economy, Logistics",
+    expertise: ["System Architecture", "Distributed Systems", "Data Engineering"],
     social: {
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/kumarroshan2006",
+      twitter: "#"
     }
-  }
+  },
 ];
 
 const values = [
