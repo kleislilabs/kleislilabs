@@ -38,29 +38,29 @@ import { ValueCard } from "@/components/about/ValueCard";
 import { StatsCounter } from "@/components/about/StatsCounter";
 
 const stats = [
-  { value: 87, suffix: "+", label: "AI Projects Delivered" },
-  { value: 4, label: "Continents Served" },
-  { value: 3, suffix: "X", label: "Average ROI" },
-  { value: 92, suffix: "%", label: "Client Retention" }
+  { value: 30, suffix: "+", label: "MVPs Launched" },
+  { value: 12, label: "Funded Startups" },
+  { value: 20, suffix: "K", label: "Monthly Value per Client" },
+  { value: 85, suffix: "%", label: "Client Success Rate" }
 ];
 
 const timelineItems = [
   {
     year: "2023",
-    title: "The Genesis",
-    description: "Born from frustration with the AI hype cycle. While everyone talked about AI, we started building real solutions that actually work in production.",
+    title: "The Beginning",
+    description: "Started with a mission to make AI accessible. Built our first MVPs for early-stage startups, proving AI can deliver value in weeks, not months.",
     highlight: false
   },
   {
     year: "2024",
-    title: "The Breakthrough",
-    description: "Cracked the code on rapid AI deployment. Our 4-week MVP framework helped 30+ startups go from idea to funded product, raising $50M+ collectively.",
+    title: "Finding Our Groove",
+    description: "Refined our 4-week MVP framework. Helped 12 startups secure funding with AI-powered prototypes. Each client now saves $20K+ monthly through automation.",
     highlight: false
   },
   {
     year: "2025",
-    title: "The Revolution",
-    description: "Now the secret weapon of leading VCs and Fortune 500s. Delivering enterprise AI transformations that save millions and ship in weeks, not years.",
+    title: "Scaling Impact",
+    description: "Expanding our proven model. Building the next wave of AI-first startups while maintaining our commitment to rapid, practical implementation.",
     highlight: true
   }
 ];
@@ -137,23 +137,23 @@ const values = [
 
 const clientSuccess = [
   {
-    metric: "60%",
-    description: "Average cost reduction in operations",
-    icon: TrendingUp
-  },
-  {
-    metric: "4 weeks",
-    description: "From concept to production deployment",
-    icon: Clock
-  },
-  {
-    metric: "$2.5M",
-    description: "Average annual savings per client",
+    metric: "$20K",
+    description: "Average monthly value generated",
     icon: DollarSign
   },
   {
-    metric: "10x",
-    description: "Faster than traditional consultancies",
+    metric: "4 weeks",
+    description: "MVP to production deployment",
+    icon: Clock
+  },
+  {
+    metric: "40%",
+    description: "Funding success rate for our MVPs",
+    icon: TrendingUp
+  },
+  {
+    metric: "3x",
+    description: "Faster than building in-house",
     icon: Zap
   }
 ];
@@ -198,19 +198,19 @@ export default function AboutUsPage() {
                     </motion.div>
                     
                     <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
-                      99% of AI Projects Fail. Here&apos;s Why We&apos;re Different.
+                      Most Startups Struggle with AI. We Make It Simple.
                     </h2>
                     
                     <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                      Every day, companies burn millions on AI consultants who deliver nothing but slide decks and promises. 
-                      Meanwhile, <span className="font-semibold text-foreground">their competitors using our AI solutions are automating operations, 
-                      slashing costs by 60%, and capturing market share at unprecedented speed.</span>
+                      While others spend months planning, our clients ship AI-powered MVPs in 4 weeks. 
+                      <span className="font-semibold text-foreground">12 of our 30 clients have already secured funding, 
+                      and each saves an average of $20K monthly through intelligent automation.</span>
                     </p>
                     
                     <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                      We&apos;re not consultants. We&apos;re builders. Engineers who&apos;ve shipped AI at scale for unicorns and Fortune 500s. 
-                      <span className="font-semibold text-foreground"> We don&apos;t just advise—we architect, code, deploy, and scale AI systems 
-                      that generate real revenue from day one.</span>
+                      We&apos;re builders who understand startups. We&apos;ve been in the trenches, shipped products, and know what it takes to impress investors. 
+                      <span className="font-semibold text-foreground"> We don&apos;t just build AI—we build fundable, scalable products 
+                      that demonstrate real traction from week one.</span>
                     </p>
                     
                     <div className="pt-4">
@@ -297,22 +297,22 @@ export default function AboutUsPage() {
                   </div>
                   
                   <h2 className="text-3xl sm:text-4xl font-bold">
-                    Why Your Competitors Are Eating Your Lunch
+                    What Smart Startups Are Building With AI
                   </h2>
                   
                   <div className="space-y-4">
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      While you&apos;re stuck in endless meetings about &quot;AI strategy,&quot; 
-                      <span className="font-semibold text-foreground"> your competitors are already using AI to:</span>
+                      While some are still debating AI strategy, 
+                      <span className="font-semibold text-foreground"> our clients are already using AI to:</span>
                     </p>
                     
                     <ul className="space-y-3">
                       {[
-                        "Automate 70% of customer service (saving $2M+ annually)",
-                        "Predict customer churn 3 months in advance (retaining 40% more revenue)",
-                        "Optimize supply chains in real-time (cutting costs by 35%)",
-                        "Generate personalized content at scale (10x engagement rates)",
-                        "Process documents 50x faster (from days to minutes)"
+                        "Automate customer support (saving $20K+ monthly)",
+                        "Build intelligent workflows that scale without hiring",
+                        "Create MVPs that secure seed funding in weeks",
+                        "Generate personalized content at 10x speed",
+                        "Process data that would take humans days in minutes"
                       ].map((item, index) => (
                         <motion.li
                           key={index}
@@ -595,25 +595,25 @@ export default function AboutUsPage() {
                     </div>
                     
                     <h2 className="text-3xl sm:text-4xl font-bold">
-                      Trusted by Leaders Worldwide
+                      Building for a Global Market
                     </h2>
                     
                     <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                      From Silicon Valley unicorns to Dubai&apos;s tech giants, we&apos;ve deployed AI solutions that power 
-                      <span className="font-semibold text-foreground"> millions of users across 4 continents.</span> We don&apos;t just understand 
-                      different markets—we&apos;ve conquered them.
+                      Our distributed team works around the clock to deliver AI solutions for startups worldwide. 
+                      <span className="font-semibold text-foreground"> We understand different markets, regulations, and user needs</span> because 
+                      we&apos;ve built products that serve them.
                     </p>
                     
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 max-w-3xl mx-auto">
                       {[
-                        { country: "USA", clients: "15+ Startups" },
-                        { country: "UK", clients: "8 Enterprises" },
-                        { country: "UAE", clients: "5 Govt Projects" },
-                        { country: "Singapore", clients: "10+ Fintechs" },
-                        { country: "Germany", clients: "6 Manufacturers" },
-                        { country: "Australia", clients: "4 Retailers" },
-                        { country: "Canada", clients: "7 SaaS" },
-                        { country: "India", clients: "20+ SMBs" }
+                        { country: "USA", clients: "12 Startups" },
+                        { country: "UK", clients: "4 Startups" },
+                        { country: "UAE", clients: "3 Projects" },
+                        { country: "Singapore", clients: "2 Fintechs" },
+                        { country: "Germany", clients: "2 SaaS" },
+                        { country: "Australia", clients: "2 Startups" },
+                        { country: "Canada", clients: "3 Startups" },
+                        { country: "India", clients: "2 SMBs" }
                       ].map((location) => (
                         <div key={location.country} className="text-center">
                           <Badge variant="outline" className="mb-1 px-3 py-1">
@@ -652,28 +652,28 @@ export default function AboutUsPage() {
                   <div className="grid gap-6 md:grid-cols-2">
                     {[
                       {
-                        title: "We Ship, Not Just Strategize",
-                        description: "87+ production AI systems live and generating value. Zero failed deployments."
+                        title: "We Ship Real MVPs",
+                        description: "30+ AI-powered MVPs launched. 40% secured funding within 6 months."
                       },
                       {
-                        title: "4-Week Delivery Guarantee",
-                        description: "From kickoff to production in 4 weeks or your money back. We&apos;re that confident."
+                        title: "4-Week Sprint Model",
+                        description: "From idea to working MVP in 4 weeks. Perfect for pre-seed validation."
                       },
                       {
-                        title: "Engineers, Not Salespeople",
-                        description: "Every person you talk to can actually build what they&apos;re proposing. No middlemen."
+                        title: "Startup-Friendly Pricing",
+                        description: "Flexible engagement models designed for early-stage budgets."
                       },
                       {
-                        title: "Fixed Price, No Surprises",
-                        description: "Know exactly what you&apos;re paying upfront. No hourly billing games or scope creep."
+                        title: "$20K Monthly Value",
+                        description: "Our automation solutions save clients an average of $20K per month."
                       },
                       {
-                        title: "Your Team Learns Too",
-                        description: "We don&apos;t create dependency. We transfer knowledge so you can maintain and evolve."
+                        title: "Investor-Ready Products",
+                        description: "We build MVPs that demonstrate traction and scalability to VCs."
                       },
                       {
-                        title: "3X ROI or We Work Free",
-                        description: "If our solution doesn&apos;t deliver at least 3X ROI in year one, we&apos;ll fix it for free."
+                        title: "Continued Support",
+                        description: "We stick around post-launch to ensure your success and iterate based on user feedback."
                       }
                     ].map((item, index) => (
                       <motion.div
