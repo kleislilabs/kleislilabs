@@ -3,12 +3,12 @@ import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { CalCta } from "@/components/CalCta";
 import { CtaSection } from "@/components/ui/CtaSection";
 import { Section } from "@/components/ui/Section";
 import { blogConfig } from "@/lib/config";
-import { Mail, Github, Twitter, MessageCircle, Users, Lightbulb, ArrowRight } from "lucide-react";
+import { Mail, Github, Twitter, MessageCircle, Users, Lightbulb, ArrowRight, Calendar } from "lucide-react";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: `Contact | ${blogConfig.title}`,
@@ -37,10 +37,17 @@ export default function ContactPage() {
                   <h2 className="text-2xl font-bold">Let&apos;s Connect</h2>
                 </div>
                 
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   Whether you have questions about AI implementation, want to discuss a potential project, 
                   or simply want to share your thoughts, we&apos;re always excited to connect.
                 </p>
+                
+                <div className="mb-8">
+                  <CalCta size="lg" className="w-full" variant="default">
+                    <Calendar className="mr-2 h-5 w-5" />
+                    Schedule a Discovery Call
+                  </CalCta>
+                </div>
                 
                 <div className="space-y-6">
                   {blogConfig.social.email && (
@@ -178,17 +185,16 @@ export default function ContactPage() {
             description="Whether you&apos;re exploring AI possibilities or ready to implement a solution, we&apos;re here to help guide you through the process."
             actions={
               <>
-                <Button size="lg" asChild>
+                <CalCta size="lg">
+                  <Calendar className="mr-2 h-5 w-5" />
+                  Book Your Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </CalCta>
+                <Button size="lg" variant="outline" asChild>
                   <a href={`mailto:${blogConfig.social.email}`}>
                     <Mail className="mr-2 h-5 w-5" />
                     Send us an Email
-                    <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/about">
-                    Learn More About Us
-                  </Link>
                 </Button>
               </>
             }
