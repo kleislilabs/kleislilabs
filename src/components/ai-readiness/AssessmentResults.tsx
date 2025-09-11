@@ -23,6 +23,9 @@ import {
   Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/toast";
+import { EmailCaptureModal } from "./EmailCaptureModal";
+import { generatePDFReport, generateHTMLReport } from "@/lib/pdf-generator";
 
 interface AssessmentData {
   answers: Record<string, string | string[]>;
@@ -41,6 +44,60 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
   const [animatedScoreValue, setAnimatedScoreValue] = useState(0);
   const [hoveredRecommendationIndex, setHoveredRecommendationIndex] = useState<number | null>(null);
   const [isShowingConfetti, setIsShowingConfetti] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [isProcessingReport, setIsProcessingReport] = useState(false);
+  const { showToast } = useToast();
+  
+  const downloadReport = (reportData: {
+    score: number;
+    level: string;
+    email: string;
+    name?: string;
+    company?: string;
+    completedAt: string;
+    categoryScores: Record<string, number>;
+    recommendations: Array<{
+      title: string;
+      description: string;
+      priority: string;
+    }>;
+  }) => {
+    try {
+      // Generate PDF
+      const pdfBlob = generatePDFReport(reportData);
+      const url = URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `AI-Readiness-Report-${new Date().toISOString().split('T')[0]}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(
+        "Report saved",
+        "Your personalized AI strategy guide is ready",
+        "success"
+      );
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      // Fallback to HTML download
+      const htmlReport = generateHTMLReport(reportData);
+      const blob = new Blob([htmlReport], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `AI-Readiness-Report-${new Date().toISOString().split('T')[0]}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(
+        "Report saved",
+        "Your personalized recommendations are ready",
+        "success"
+      );
+    }
+  };
 
   // Animate score counting up
   useEffect(() => {
@@ -311,9 +368,11 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
           size="lg" 
           variant="outline" 
           className="w-full sm:w-auto group hover:shadow-lg hover:scale-105 transition-all hover:border-primary"
+          onClick={() => setShowEmailModal(true)}
+          disabled={isProcessingReport}
         >
           <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-          Download Report
+          {isProcessingReport ? 'Processing...' : 'Download Report'}
         </Button>
         <Button 
           size="lg" 
@@ -349,6 +408,68 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Email Capture Modal */}
+      <EmailCaptureModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        score={score}
+        level={scoreLevel.level}
+        onSubmit={async (email, sendByEmail) => {
+          setIsProcessingReport(true);
+          
+          const reportData = {
+            score,
+            level: scoreLevel.level,
+            email,
+            name: data?.answers?.name as string || '',
+            company: data?.answers?.company as string || '',
+            completedAt: data?.completedAt || new Date().toISOString(),
+            categoryScores,
+            recommendations
+          };
+          
+          if (sendByEmail) {
+            // Send report via email
+            try {
+              const response = await fetch('/api/assessment/send-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reportData)
+              });
+              
+              if (response.ok) {
+                showToast(
+                  "Check your inbox",
+                  "Your personalized AI roadmap is on its way",
+                  "success"
+                );
+              } else {
+                throw new Error('Failed to send email');
+              }
+            } catch (error) {
+              console.error('Error sending report:', error);
+              showToast(
+                "Downloading your report",
+                "We'll save the report to your device instead",
+                "info"
+              );
+              // Fallback to download
+              downloadReport(reportData);
+            }
+          } else {
+            // Direct download
+            downloadReport(reportData);
+            showToast(
+              "Success",
+              "Your AI transformation guide is ready",
+              "success"
+            );
+          }
+          
+          setIsProcessingReport(false);
+        }}
+      />
     </div>
   );
 }
