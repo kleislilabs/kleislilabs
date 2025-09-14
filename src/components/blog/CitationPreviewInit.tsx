@@ -132,6 +132,7 @@ export function CitationPreviewInit() {
     let previewEl: HTMLDivElement | null = null;
     let hideTimer: number | null = null;
     let openTimer: number | null = null;
+    const linkTapState = new WeakMap<HTMLAnchorElement, boolean>();     // Track tap state for each link
 
     const createPreviewEl = () => {
       if (previewEl) return previewEl;
@@ -235,20 +236,63 @@ export function CitationPreviewInit() {
       hideTimer = window.setTimeout(hidePreview, 150);
     };
 
+    const handleDocumentClick = (e: MouseEvent) => {
+      const target = e.target as Node | null;
+      if (!previewEl) return;
+      if (target && !previewEl.contains(target)) {
+        handleMouseLeave();
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      if (!target) return;
+      
+      const isFirstTap = !linkTapState.get(target);
+      
+      if (isFirstTap) {
+        e.preventDefault();
+        linkTapState.set(target, true);
+        
+        if (hideTimer) window.clearTimeout(hideTimer);
+        if (openTimer) window.clearTimeout(openTimer);
+        openTimer = window.setTimeout(() => showPreview(target), 100);
+      } else {
+        linkTapState.set(target, false);
+        hidePreview();
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      if (!target) return;
+      
+      const isFirstTap = linkTapState.get(target);
+      if (isFirstTap) {
+        e.preventDefault();
+      }
+    };
+  
     const attach = () => {
       const anchors = document.querySelectorAll<HTMLAnchorElement>('a.citation-link');
       anchors.forEach(a => {
         a.addEventListener('mouseenter', handleMouseEnter);
         a.addEventListener('mouseleave', handleMouseLeave);
-      });
-    };
+        a.addEventListener('touchstart', handleTouchStart, { passive: false });
+        a.addEventListener('touchend', handleTouchEnd, { passive: false });
+      })
+      document.addEventListener('click', handleDocumentClick, true);
+    }
 
     const detach = () => {
       const anchors = document.querySelectorAll<HTMLAnchorElement>('a.citation-link');
       anchors.forEach(a => {
         a.removeEventListener('mouseenter', handleMouseEnter);
         a.removeEventListener('mouseleave', handleMouseLeave);
+        a.removeEventListener('touchstart', handleTouchStart);
+        a.removeEventListener('touchend', handleTouchEnd);
       });
+      document.removeEventListener('click', handleDocumentClick, true);
       if (previewEl && previewEl.parentNode) {
         previewEl.parentNode.removeChild(previewEl);
         previewEl = null;
