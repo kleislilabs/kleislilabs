@@ -170,6 +170,22 @@ export function AssessmentForm({ onComplete }: AssessmentFormProps) {
         completedAt: new Date().toISOString(),
         score: calculateScore(userAnswers)
       };
+      
+      // Submit to API to save lead and send notification
+      fetch('/api/assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(finalData)
+      }).then(response => response.json())
+        .then(result => {
+          if (result.report) {
+            sessionStorage.setItem('assessment-report', result.report);
+          }
+        })
+        .catch(error => {
+          console.error('Failed to submit assessment:', error);
+        });
+      
       // Clear saved data on completion
       localStorage.removeItem('ai-assessment-progress');
       setTimeout(() => {

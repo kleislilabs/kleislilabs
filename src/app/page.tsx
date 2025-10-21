@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { getAllPostsMetadata } from "@/lib/posts";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { CalCta } from "@/components/CalCta";
 import { PostCard } from "@/components/blog/PostCard";
 import { Logo } from "@/components/ui/logo";
 import { Section } from "@/components/ui/Section";
@@ -45,12 +46,13 @@ export default function Home() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button size="lg" className="text-lg px-8 py-3 w-full sm:w-auto" asChild>
-                <Link href="/ai-readiness">
-                  <Brain className="mr-2 h-5 w-5" />
-                  Check AI Readiness
-                </Link>
-              </Button>
+              <CalCta 
+                size="lg" 
+                className="text-lg px-8 py-3 w-full sm:w-auto"
+              >
+                <Brain className="mr-2 h-5 w-5" />
+                Book a Discovery Call
+              </CalCta>
               <Button size="lg" variant="outline" className="text-lg px-8 py-3 w-full sm:w-auto" asChild>
                 <Link href="/about">
                   <Target className="mr-2 h-5 w-5" />
@@ -110,12 +112,10 @@ export default function Home() {
             description="Let's discuss your specific challenges and explore how our AI solutions can drive measurable results for your organization."
             actions={
               <>
-                <Button size="lg" asChild>
-                  <Link href="/contact">
-                    Get In Touch
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+                <CalCta size="lg">
+                  Schedule a Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </CalCta>
                 <Button size="lg" variant="outline" asChild>
                   <Link href="/about">
                     Learn More About Us

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { CalCta } from "@/components/CalCta";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { 
@@ -22,6 +23,9 @@ import {
   Star
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/toast";
+import { EmailCaptureModal } from "./EmailCaptureModal";
+import { generatePDFReport, generateHTMLReport } from "@/lib/pdf-generator";
 
 interface AssessmentData {
   answers: Record<string, string | string[]>;
@@ -40,6 +44,60 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
   const [animatedScoreValue, setAnimatedScoreValue] = useState(0);
   const [hoveredRecommendationIndex, setHoveredRecommendationIndex] = useState<number | null>(null);
   const [isShowingConfetti, setIsShowingConfetti] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [isProcessingReport, setIsProcessingReport] = useState(false);
+  const { showToast } = useToast();
+  
+  const downloadReport = (reportData: {
+    score: number;
+    level: string;
+    email: string;
+    name?: string;
+    company?: string;
+    completedAt: string;
+    categoryScores: Record<string, number>;
+    recommendations: Array<{
+      title: string;
+      description: string;
+      priority: string;
+    }>;
+  }) => {
+    try {
+      // Generate PDF
+      const pdfBlob = generatePDFReport(reportData);
+      const url = URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `AI-Readiness-Report-${new Date().toISOString().split('T')[0]}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(
+        "Report saved",
+        "Your personalized AI strategy guide is ready",
+        "success"
+      );
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      // Fallback to HTML download
+      const htmlReport = generateHTMLReport(reportData);
+      const blob = new Blob([htmlReport], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `AI-Readiness-Report-${new Date().toISOString().split('T')[0]}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(
+        "Report saved",
+        "Your personalized recommendations are ready",
+        "success"
+      );
+    }
+  };
 
   // Animate score counting up
   useEffect(() => {
@@ -78,35 +136,35 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
   const recommendations = [
     {
       icon: Target,
-      title: "Define Clear AI Objectives",
-      description: "Work with stakeholders to establish specific, measurable AI goals aligned with business outcomes.",
+      title: "Crystallize Your AI Vision",
+      description: "Transform business challenges into AI opportunities with clear KPIs and ROI targets that excite stakeholders.",
       priority: "High"
     },
     {
       icon: Database,
-      title: "Improve Data Infrastructure",
-      description: "Invest in data quality, governance, and accessibility to build a strong foundation for AI.",
+      title: "Unlock Your Data's Potential",
+      description: "Turn your existing data into a competitive advantage with modern infrastructure and smart governance.",
       priority: "High"
     },
     {
       icon: Users,
-      title: "Build AI Capabilities",
-      description: "Develop internal expertise through training or strategic hiring in data science and AI.",
+      title: "Empower Your Team",
+      description: "Build an AI-ready workforce through strategic upskilling and selective talent acquisition.",
       priority: "Medium"
     },
     {
       icon: Shield,
-      title: "Establish AI Governance",
-      description: "Create policies and procedures for ethical AI use, data privacy, and risk management.",
+      title: "Lead with Trust",
+      description: "Implement responsible AI practices that protect your brand and build customer confidence.",
       priority: "Medium"
     }
   ];
 
   const nextSteps = [
-    "Schedule a free consultation with our AI experts",
-    "Download our AI Implementation Roadmap",
-    "Join our AI Readiness Workshop",
-    "Access our library of AI case studies"
+    "Book a complimentary strategy session with our AI specialists",
+    "Get your personalized AI Implementation Roadmap",
+    "Join our exclusive AI Transformation Workshop",
+    "Explore real-world AI success stories from our portfolio"
   ];
 
   return (
@@ -156,8 +214,10 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
             {scoreLevel.level} Level
           </Badge>
           <p className="text-muted-foreground max-w-md mx-auto animate-in fade-in duration-1500">
-            Your organization shows {scoreLevel.level.toLowerCase()} readiness for AI implementation. 
-            See below for detailed insights and recommendations.
+            {score >= 8 ? "Excellent! Your organization is primed for AI transformation. Let's accelerate your journey." :
+             score >= 6 ? "Great foundation! You're well-positioned to start meaningful AI initiatives." :
+             score >= 4 ? "Good start! With targeted improvements, you'll be ready for impactful AI adoption." :
+             "Perfect timing! We'll help you build a solid foundation for successful AI implementation."}
           </p>
         </CardContent>
       </Card>
@@ -297,20 +357,22 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
 
       {/* Enhanced Action Buttons with hover animations */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in zoom-in duration-1000">
-        <Button 
+        <CalCta 
           size="lg" 
           className="w-full sm:w-auto group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary transition-all hover:shadow-xl hover:scale-105"
         >
           <Calendar className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-          Schedule Consultation
-        </Button>
+          Schedule Free Consultation
+        </CalCta>
         <Button 
           size="lg" 
           variant="outline" 
           className="w-full sm:w-auto group hover:shadow-lg hover:scale-105 transition-all hover:border-primary"
+          onClick={() => setShowEmailModal(true)}
+          disabled={isProcessingReport}
         >
           <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-          Download Report
+          {isProcessingReport ? 'Processing...' : 'Download Report'}
         </Button>
         <Button 
           size="lg" 
@@ -330,22 +392,84 @@ export function AssessmentResults({ data, onRestart }: AssessmentResultsProps) {
         <CardContent className="pt-6 relative z-10">
           <div className="text-center space-y-4">
             <h3 className="text-xl font-bold animate-in slide-in-from-bottom duration-700">
-              Ready to Transform Your Business with AI?
+              Let&apos;s Build Your AI Success Story Together
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto animate-in slide-in-from-bottom duration-900">
-              Our team of AI experts is ready to help you navigate your AI journey. 
-              Get a personalized roadmap and implementation strategy tailored to your needs.
+              Join industry leaders who&apos;ve transformed their operations with our AI expertise. 
+              We&apos;ll create a custom implementation strategy that delivers measurable ROI within weeks, not months.
             </p>
-            <Button 
+            <CalCta 
               size="lg" 
               className="mt-4 group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary transition-all hover:shadow-xl hover:scale-105 animate-in zoom-in duration-1100"
             >
-              Get Started Today
+              Start Your AI Journey
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
-            </Button>
+            </CalCta>
           </div>
         </CardContent>
       </Card>
+
+      {/* Email Capture Modal */}
+      <EmailCaptureModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        score={score}
+        level={scoreLevel.level}
+        onSubmit={async (email, sendByEmail) => {
+          setIsProcessingReport(true);
+          
+          const reportData = {
+            score,
+            level: scoreLevel.level,
+            email,
+            name: data?.answers?.name as string || '',
+            company: data?.answers?.company as string || '',
+            completedAt: data?.completedAt || new Date().toISOString(),
+            categoryScores,
+            recommendations
+          };
+          
+          if (sendByEmail) {
+            // Send report via email
+            try {
+              const response = await fetch('/api/assessment/send-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reportData)
+              });
+              
+              if (response.ok) {
+                showToast(
+                  "Check your inbox",
+                  "Your personalized AI roadmap is on its way",
+                  "success"
+                );
+              } else {
+                throw new Error('Failed to send email');
+              }
+            } catch (error) {
+              console.error('Error sending report:', error);
+              showToast(
+                "Downloading your report",
+                "We'll save the report to your device instead",
+                "info"
+              );
+              // Fallback to download
+              downloadReport(reportData);
+            }
+          } else {
+            // Direct download
+            downloadReport(reportData);
+            showToast(
+              "Success",
+              "Your AI transformation guide is ready",
+              "success"
+            );
+          }
+          
+          setIsProcessingReport(false);
+        }}
+      />
     </div>
   );
 }
