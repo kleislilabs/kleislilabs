@@ -122,13 +122,15 @@ npm run build
 ## Common issues
 
 - Build takes too long and fails:
+
   - Ensure previews are generated in prebuild (they are). Do not delete `public/previews/*.json` before build unless you intend to re-crawl.
 
 - No hovercard on some pills:
+
   - Some sources don’t expose title/description meta; the pill still opens the source.
 
 - Brand image missing:
-  - `siteLogoUrl` falls back to `link[rel=icon]`. Not all sites provide icons; the card renders without an image.
+  - `siteLogoUrl` falls back to `link[rel=icon]`. Not all sites provide icons; the card renders without an image. malay kumar
 
 ## Scripts
 
